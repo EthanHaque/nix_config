@@ -15,6 +15,7 @@
   home.packages = with pkgs; [
     ruff
     btop
+    gnome-tweaks  # TODO: come up with a better solution for swapping caps and esc
   ];
 
   home.file = { };
