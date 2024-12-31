@@ -53,6 +53,7 @@
   };
 
   programs.nano.enable = false;
+  programs.steam.enable = true;
   nixpkgs.config.allowUnfree = true;
 
   environment.variables.EDITOR = "vim";
