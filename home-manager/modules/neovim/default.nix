@@ -24,6 +24,14 @@ config,
         config = builtins.readFile ./nvim/plugins/autopairs.lua;
       }
       {
+        plugin =
+        nvim-cmp;
+        type = "lua";
+        config = builtins.readFile ./nvim/plugins/cmp.lua;
+      }
+      cmp-nvim-lsp
+      cmp-buffer
+      {
         plugin = cyberdream-nvim;
         config = ''
         colorscheme cyberdream
@@ -44,6 +52,7 @@ config,
         type = "lua";
         config = builtins.readFile ./nvim/plugins/lualine.lua;
       }
+      luasnip
       {
         plugin = nvim-lspconfig;
         config = builtins.readFile ./nvim/plugins/lsp.lua;
