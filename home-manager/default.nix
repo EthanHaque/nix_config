@@ -16,6 +16,8 @@
     ruff
     btop
     gnome-tweaks  # TODO: come up with a better solution for swapping caps and esc
+    devenv
+
   ];
 
   home.file = { };
@@ -24,6 +26,7 @@
     enable = true;
     userName = "Ethan Haque";
     userEmail = "ethan.k.haque@gmail.com";
+    extraConfig.init.defaultBranch = "main";
   };
   programs.bash.enable = true;
   programs.home-manager.enable = true;
