@@ -17,6 +17,8 @@ config,
       cursor_shape = "underline";
       cursor_underline_thickness = 1.5;
       cursor_blink_interval = 0.7;
+      cursor_trail = 4;
+      cursor_trail_decay = "0.1 0.2";
 
       scrollback_lines = 2000;
       scrollback_fill_enlarged_window = false;
@@ -29,7 +31,7 @@ config,
 
       foreground = "#ffffff";
       background = "#16181a";
-      background_opacity = 1.0;
+      background_opacity = 0.8;
       background_tint = 1.0;
       dim_opacity = 0.75;
       selection_foreground = "#16181a";
