@@ -25,6 +25,8 @@ config,
       wheel_scroll_multiplier = 8.0;
       wheel_scroll_min_lines = 1;
 
+      tab_bar_style = "powerline";
+
       repaint_delay = 20;
       input_delay = 5;
       sync_to_monitor = true;
@@ -53,6 +55,20 @@ config,
       color14 = "#5ef1ff";
       color7 = "#ffffff";
       color15 = "#ffffff";
+
+      keybindings = ''
+        map ctrl+w close_tab
+        map ctrl+t new_tab_with_cwd
+        map f1 set_tab_title
+
+
+        enabled_layouts Tall, *
+        map ctrl+enter new_window
+        map ctrl+h neighboring_window left
+        map ctrl+j neighboring_window bottom
+        map ctrl+k neighboring_window top
+        map ctrl+l neighboring_window right
+      '';
     };
   };
 }
