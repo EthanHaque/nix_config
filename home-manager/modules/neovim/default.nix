@@ -15,6 +15,7 @@ config,
       ripgrep
       fd
       pyright
+      lua-language-server
     ];
 
     plugins = with pkgs.vimPlugins; [
@@ -31,6 +32,10 @@ config,
       }
       cmp-nvim-lsp
       cmp-buffer
+      cmp-path
+      cmp_luasnip
+      luasnip
+      friendly-snippets
       {
         plugin = cyberdream-nvim;
         config = ''
@@ -52,7 +57,6 @@ config,
         type = "lua";
         config = builtins.readFile ./nvim/plugins/lualine.lua;
       }
-      luasnip
       {
         plugin = nvim-lspconfig;
         config = builtins.readFile ./nvim/plugins/lsp.lua;
