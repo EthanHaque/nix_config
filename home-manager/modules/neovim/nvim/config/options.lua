@@ -49,6 +49,7 @@ vim.opt.listchars = {
 }
 
 -- Removes command line from bottom except when recording macro.
+vim.opt.cmdheight = 0
 vim.cmd [[ autocmd RecordingLeave * set cmdheight=0 ]]
 vim.cmd [[ autocmd RecordingEnter * set cmdheight=1 ]]
 
