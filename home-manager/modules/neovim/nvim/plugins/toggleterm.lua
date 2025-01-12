@@ -1,5 +1,11 @@
 require("toggleterm").setup({
-  size = 20,
+  size = function(term)
+    if term.direction == "horizontal" then
+      return 20
+    elseif term.direction == "vertical" then
+      return 80
+    end
+  end,
   open_mapping = [[<c-\>]],
   hide_numbers = true,
   shade_filetypes = {},
@@ -10,4 +16,5 @@ require("toggleterm").setup({
   persist_size = true,
   close_on_exit = true,
   shell = vim.o.shell,
+  direction = "vertical",
 })
