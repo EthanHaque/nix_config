@@ -60,7 +60,7 @@ config,
     };
     keybindings = {
         "ctrl+t" = "new_tab_with_cwd";
-        "f2" = "set_tab_title";
+        "ctrl+f2" = "set_tab_title";
 
         "ctrl+enter" = "new_window";
         "ctrl+w" = "close_window";
