@@ -56,19 +56,18 @@ config,
       color7 = "#ffffff";
       color15 = "#ffffff";
 
-      keybindings = ''
-        map ctrl+w close_tab
-        map ctrl+t new_tab_with_cwd
-        map f1 set_tab_title
+      enabled_layouts = "Tall, *";
+    };
+    keybindings = {
+        "ctrl+t" = "new_tab_with_cwd";
+        "f2" = "set_tab_title";
 
-
-        enabled_layouts Tall, *
-        map ctrl+enter new_window
-        map ctrl+h neighboring_window left
-        map ctrl+j neighboring_window bottom
-        map ctrl+k neighboring_window top
-        map ctrl+l neighboring_window right
-      '';
+        "ctrl+enter" = "new_window";
+        "ctrl+w" = "close_window";
+        "ctrl+h" = "neighboring_window left";
+        "ctrl+j" = "neighboring_window bottom";
+        "ctrl+k" = "neighboring_window top";
+        "ctrl+l" = "neighboring_window right";
     };
   };
 }
