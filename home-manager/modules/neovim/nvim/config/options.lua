@@ -10,8 +10,8 @@ vim.cmd([[
 
 vim.opt.backspace = { "eol", "start", "indent" } -- allow backspacing over everything in insert mode
 vim.opt.clipboard = "unnamedplus"                -- allow neovim to access the system clipboard
-vim.opt.fileencoding = "utf-8"
-vim.opt.encoding = "utf-8" -- TODO: are these both needed?
+vim.opt.encoding = "utf-8"                       -- Internal encoding used by Vim
+vim.opt.fileencoding = "utf-8"                   -- Encoding used when saving files
 vim.opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
 vim.opt.syntax = "enable"
 
@@ -21,7 +21,7 @@ vim.opt.expandtab = true     -- convert tabs to spaces
 vim.opt.shiftwidth = indent  -- the number of spaces inserted for each indentation
 vim.opt.smartindent = true   -- make indenting smarter
 vim.opt.softtabstop = indent -- when hitting <BS>, pretend like a tab is removed, even if spaces
-vim.opt.tabstop = indent     -- insert 2 spaces for a tab
+vim.opt.tabstop = indent
 vim.opt.shiftround = true    -- use multiple of shiftwidth when indenting with "<" and ">"
 
 -- search
@@ -48,11 +48,12 @@ vim.opt.listchars = {
   nbsp = "×",
 }
 
--- Hide cmd line
-vim.opt.cmdheight = 0      -- more space in the neovim command line for displaying messages
+-- Removes command line from bottom except when recording macro.
+vim.cmd [[ autocmd RecordingLeave * set cmdheight=0 ]]
+vim.cmd [[ autocmd RecordingEnter * set cmdheight=1 ]]
 
 vim.opt.scrolloff = 18     -- minimal number of screen lines to keep above and below the cursor
-vim.opt.sidescrolloff = 10  -- minimal number of screen columns to keep to the left and right (horizontal) of the cursor if wrap is `false`
+vim.opt.sidescrolloff = 10 -- minimal number of screen columns to keep to the left and right (horizontal) of the cursor if wrap is `false`
 vim.opt.signcolumn = "yes" -- always show the sign column, otherwise it would shift the text each time
 vim.opt.splitbelow = true  -- open new split below
 vim.opt.splitright = true  -- open new split to the right
@@ -67,12 +68,9 @@ vim.opt.writebackup = false -- if a file is being edited by another program (or 
 vim.opt.completeopt = { "menu", "menuone", "noselect" } -- mostly just for cmp
 vim.opt.shortmess = vim.opt.shortmess + {
   c = true,
-} -- hide all the completion messages, e.g. "-- XXX completion (YYY)", "match 1 of 2", "The only match", "Pattern not found"
+}                        -- hide all the completion messages, e.g. "-- XXX completion (YYY)", "match 1 of 2", "The only match", "Pattern not found"
 
--- By the way, -- INSERT -- is unnecessary anymore because the mode information is displayed in the statusline.
-vim.opt.showmode = false
-
--- perfomance
+vim.opt.showmode = true  -- perfomance
 -- remember N lines in history
 vim.opt.history = 100    -- keep 100 lines of history
 vim.opt.redrawtime = 1500
