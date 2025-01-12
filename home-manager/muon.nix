@@ -1,5 +1,4 @@
-{ config, pkgs, ... }:
-{
+inputs @ { config, pkgs, vars, ... }: {
   imports = [
     ./modules/browsers
     ./modules/neovim
@@ -7,8 +6,8 @@
     ./modules/tmux
     ./modules/starship
   ];
-  home.username = "strange";
-  home.homeDirectory = "/home/strange";
+  home.username = "muon";
+  home.homeDirectory = "/home/muon";
 
   home.stateVersion = "24.11";
 
@@ -17,7 +16,6 @@
     btop
     gnome-tweaks  # TODO: come up with a better solution for swapping caps and esc
     devenv
-
   ];
 
   home.file = { };
@@ -28,6 +26,7 @@
     userEmail = "ethan.k.haque@gmail.com";
     extraConfig.init.defaultBranch = "main";
   };
+
   programs.bash.enable = true;
   programs.home-manager.enable = true;
 }

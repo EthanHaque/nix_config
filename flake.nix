@@ -27,11 +27,25 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.strange = import ./home-manager;
+            home-manager.users.strange = import ./home-manager/strange.nix;
             home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.backupFileExtension = "backup";
           }
           nixos-hardware.nixosModules.dell-precision-5530
+        ];
+      };
+      gluon = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+        modules = [
+          ./hosts/adlink
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.muon = import ./home-manager/muon.nix;
+            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.backupFileExtension = "backup";
+          }
         ];
       };
     };
