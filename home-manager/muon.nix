@@ -16,6 +16,8 @@ inputs @ { config, pkgs, vars, ... }: {
     btop
     devenv
     gnomeExtensions.pop-shell
+    bat
+    lsd
   ];
 
   home.file = { };
@@ -137,6 +139,15 @@ inputs @ { config, pkgs, vars, ... }: {
     extraConfig.pull.rebase = true;
   };
 
-  programs.bash.enable = true;
+  programs.bash = {
+    enable = true;
+    shellAliases = {
+      cat = "bat";
+      ls = "lsd";
+      ll = "ls -l";
+      la = "ls -a";
+      lla = "ls -la";
+    };
+  };
   programs.home-manager.enable = true;
 }
