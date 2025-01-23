@@ -6,8 +6,8 @@ inputs @ { config, pkgs, vars, ... }: {
     ./modules/tmux
     ./modules/starship
   ];
-  home.username = "strange";
-  home.homeDirectory = "/home/strange";
+  home.username = vars.username;
+  home.homeDirectory = "/home/${vars.username}";
 
   home.stateVersion = "24.11";
 
@@ -19,8 +19,6 @@ inputs @ { config, pkgs, vars, ... }: {
     bat
     lsd
   ];
-
-  home.file = { };
 
   dconf.settings = {
     "org/gnome/shell" = {
