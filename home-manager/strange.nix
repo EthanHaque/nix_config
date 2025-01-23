@@ -6,6 +6,7 @@ inputs @ { config, pkgs, vars, ... }: {
     ./modules/tmux
     ./modules/starship
     ./modules/bash
+    ./modules/git
   ];
   home.username = vars.username;
   home.homeDirectory = "/home/${vars.username}";
@@ -128,14 +129,6 @@ inputs @ { config, pkgs, vars, ... }: {
       stacking-with-mouse = false;
       tile-by-default = true;
     };
-  };
-
-  programs.git = {
-    enable = true;
-    userName = "Ethan Haque";
-    userEmail = "ethan.k.haque@gmail.com";
-    extraConfig.init.defaultBranch = "main";
-    extraConfig.pull.rebase = true;
   };
 
   programs.home-manager.enable = true;
