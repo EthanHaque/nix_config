@@ -6,8 +6,8 @@ inputs @ { config, pkgs, vars, ... }: {
     ./modules/tmux
     ./modules/starship
   ];
-  home.username = "muon";
-  home.homeDirectory = "/home/muon";
+  home.username = "strange";
+  home.homeDirectory = "/home/strange";
 
   home.stateVersion = "24.11";
 
