@@ -19,7 +19,13 @@
 
   outputs = inputs@{ nixpkgs, home-manager, nixos-hardware, ... }: {
     nixosConfigurations = {
-      charm = nixpkgs.lib.nixosSystem {
+      charm = nixpkgs.lib.nixosSystem rec {
+        specialArgs = {
+          inherit inputs;
+          vars = {
+            username = "strange";
+          };
+        };
         system = "x86_64-linux";
         modules = [
           ./hosts/precision
@@ -28,13 +34,19 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.strange = import ./home-manager/strange.nix;
-            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.extraSpecialArgs = specialArgs;
             home-manager.backupFileExtension = "backup";
           }
           nixos-hardware.nixosModules.dell-precision-5530
         ];
       };
-      gluon = nixpkgs.lib.nixosSystem {
+      gluon = nixpkgs.lib.nixosSystem rec {
+        specialArgs = {
+          inherit inputs;
+          vars = {
+            username = "muon";
+          };
+        };
         system = "aarch64-linux";
         modules = [
           ./hosts/adlink
@@ -43,7 +55,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.muon = import ./home-manager/muon.nix;
-            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.extraSpecialArgs = specialArgs;
             home-manager.backupFileExtension = "backup";
           }
         ];

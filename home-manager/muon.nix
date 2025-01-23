@@ -6,8 +6,8 @@ inputs @ { config, pkgs, vars, ... }: {
     ./modules/tmux
     ./modules/starship
   ];
-  home.username = "muon";
-  home.homeDirectory = "/home/muon";
+  home.username = vars.username;
+  home.homeDirectory = "/home/${vars.username}";
 
   home.stateVersion = "24.11";
 
@@ -20,7 +20,6 @@ inputs @ { config, pkgs, vars, ... }: {
     lsd
   ];
 
-  home.file = { };
 
   dconf.settings = {
     "org/gnome/shell" = {
