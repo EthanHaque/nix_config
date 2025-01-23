@@ -68,6 +68,10 @@
     vim
   ];
 
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+  ];
+
   environment.gnome.excludePackages = with pkgs; [
     orca
     evince
