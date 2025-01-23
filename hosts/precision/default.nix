@@ -8,7 +8,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "charm"; # Define your hostname.
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   networking.networkmanager.enable = true;
 
@@ -47,7 +47,7 @@
 
   users.users.strange = {
     isNormalUser = true;
-    description = "charm";
+    description = "strange";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [ ];
   };
