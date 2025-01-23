@@ -135,6 +135,7 @@ inputs @ { config, pkgs, vars, ... }: {
     userName = "Ethan Haque";
     userEmail = "ethan.k.haque@gmail.com";
     extraConfig.init.defaultBranch = "main";
+    extraConfig.pull.rebase = true;
   };
 
   programs.bash.enable = true;
