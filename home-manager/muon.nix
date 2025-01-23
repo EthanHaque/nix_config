@@ -5,6 +5,7 @@ inputs @ { config, pkgs, vars, ... }: {
     ./modules/kitty
     ./modules/tmux
     ./modules/starship
+    ./modules/bash
   ];
   home.username = vars.username;
   home.homeDirectory = "/home/${vars.username}";
@@ -138,15 +139,5 @@ inputs @ { config, pkgs, vars, ... }: {
     extraConfig.pull.rebase = true;
   };
 
-  programs.bash = {
-    enable = true;
-    shellAliases = {
-      cat = "bat";
-      ls = "lsd";
-      ll = "ls -l";
-      la = "ls -a";
-      lla = "ls -la";
-    };
-  };
   programs.home-manager.enable = true;
 }
