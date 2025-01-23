@@ -8,7 +8,7 @@ config,
     enable = true;
     font = {
       name = "JetBrainsMono Nerd Font Mono";
-      size = 10;
+      size = 12;
     };
     settings = {
       enable_audio_bell = false;
