@@ -1,4 +1,4 @@
-inputs @ { config, pkgs, vars, ... }: {
+inputs @ { config, pkgs, vars, lib, ... }: {
   imports = [
     ./modules/browsers
     ./modules/neovim
@@ -22,6 +22,8 @@ inputs @ { config, pkgs, vars, ... }: {
     bat
     lsd
   ];
+
+  programs.kitty.font.size = lib.mkForce 10;
 
   programs.home-manager.enable = true;
 }
