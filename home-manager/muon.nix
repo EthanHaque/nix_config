@@ -21,6 +21,7 @@ inputs @ { config, pkgs, vars, ... }: {
     gnomeExtensions.pop-shell
     bat
     lsd
+    keepassxc
   ];
 
   programs.home-manager.enable = true;

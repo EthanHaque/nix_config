@@ -21,6 +21,7 @@ inputs @ { config, pkgs, vars, lib, ... }: {
     gnomeExtensions.pop-shell
     bat
     lsd
+    keepassxc
   ];
 
   programs.kitty.font.size = lib.mkForce 10;
