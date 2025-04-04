@@ -68,6 +68,7 @@
   environment.variables.EDITOR = "vim";
   environment.systemPackages = with pkgs; [
     vim
+    docker-compose
   ];
 
   fonts.packages = with pkgs; [
