@@ -37,6 +37,8 @@
 
   services.printing.enable = true;
 
+  virtualisation.docker.enable = true;
+
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -49,7 +51,7 @@
   users.users.strange = {
     isNormalUser = true;
     description = "strange";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [ ];
   };
 

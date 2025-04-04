@@ -43,6 +43,8 @@
 
   services.printing.enable = true;
 
+  virtualisation.docker.enable = true;
+
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -55,7 +57,7 @@
   users.users.muon = {
     isNormalUser = true;
     description = "muon";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [ ];
   };
 
