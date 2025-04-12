@@ -6,8 +6,98 @@ config,
 {
   dconf.settings = {
     "org/gnome/shell" = {
-      disabled-extensions = "disabled";
+      allow-extension-installation = true;
+      always-show-log-out = false;
+      app-picker-layout = ''
+        [{'org.gnome.Geary.desktop': <{'position': <0>}>,
+          'org.gnome.Contacts.desktop': <{'position': <1>}>,
+          'org.gnome.Weather.desktop': <{'position': <2>}>,
+          'org.gnome.clocks.desktop': <{'position': <3>}>,
+          'org.gnome.Maps.desktop': <{'position': <4>}>,
+          'org.gnome.Books.desktop': <{'position': <5>}>,
+          'org.gnome.Photos.desktop': <{'position': <6>}>,
+          'org.gnome.Totem.desktop': <{'position': <7>}>,
+          'org.gnome.Calculator.desktop': <{'position': <8>}>,
+          'org.gnome.gedit.desktop': <{'position': <9>}>,
+          'simple-scan.desktop': <{'position': <10>}>,
+          'org.gnome.Settings.desktop': <{'position': <11>}>,
+          'org.gnome.SystemMonitor.desktop': <{'position': <12>}>,
+          'org.gnome.Boxes.desktop': <{'position': <13>}>,
+          'org.gnome.Terminal.desktop': <{'position': <14>}>,
+          'Utilities': <{'position': <15>}>,
+          'org.gnome.Characters.desktop': <{'position': <16>}>,
+          'yelp.desktop': <{'position': <17>}>,
+          'org.gnome.Screenshot.desktop': <{'position': <18>}>,
+          'org.gnome.Cheese.desktop': <{'position': <19>}>,
+          'org.gnome.font-viewer.desktop': <{'position': <20>}>}]
+      '';
+      command-history = [];
+      development-tools = true;
+      disable-extension-version-validation = false;
+      disable-user-extensions = false;
+      disabled-extensions = [];
       enabled-extensions = ["pop-shell@system76.com"];
+      favorite-apps = [
+        "org.gnome.Epiphany.desktop"
+        "org.gnome.Geary.desktop"
+        "org.gnome.Calendar.desktop"
+        "org.gnome.Music.desktop"
+        "org.gnome.Nautilus.desktop"
+      ];
+      last-selected-power-profile = "power-saver";
+      looking-glass-history = [];
+      remember-mount-password = false;
+      welcome-dialog-last-shown-version = "47.2";
+    };
+    "org/gnome/shell/app-switcher" = {
+      current-workspace-only = false;
+    };
+    "org/gnome/shell/window-switcher" = {
+      app-icon-mode = "both";
+      current-workspace-only = true;
+    };
+    "org/gnome/shell/weather" = {
+      automatic-location = false;
+      locations = [];
+    };
+    "org/gnome/shell/world-clocks" = {
+      locations = [];
+    };
+    "org/gnome/shell/keybindings" = {
+      focus-active-notification = ["<Super>n"];
+      open-new-window-application-1 = ["<Super><Control>1"];
+      open-new-window-application-2 = ["<Super><Control>2"];
+      open-new-window-application-3 = ["<Super><Control>3"];
+      open-new-window-application-4 = ["<Super><Control>4"];
+      open-new-window-application-5 = ["<Super><Control>5"];
+      open-new-window-application-6 = ["<Super><Control>6"];
+      open-new-window-application-7 = ["<Super><Control>7"];
+      open-new-window-application-8 = ["<Super><Control>8"];
+      open-new-window-application-9 = ["<Super><Control>9"];
+      screenshot = [];
+      screenshot-window = [];
+      shift-overview-down = ["<Super><Alt>Down"];
+      shift-overview-up = ["<Super><Alt>Up"];
+      show-screen-recording-ui = [];
+      show-screenshot-ui = [];
+      switch-to-application-1 = [];
+      switch-to-application-2 = [];
+      switch-to-application-3 = [];
+      switch-to-application-4 = [];
+      switch-to-application-5 = ["<Super>5"];
+      switch-to-application-6 = ["<Super>6"];
+      switch-to-application-7 = ["<Super>7"];
+      switch-to-application-8 = ["<Super>8"];
+      switch-to-application-9 = ["<Super>9"];
+      toggle-application-view = ["<Super>a"];
+      toggle-message-tray = ["<Super>v" "<Super>m"];
+      toggle-overview = [];
+      toggle-quick-settings = ["<Super>s"];
+    };
+    "org/gnome/shell/extensions/pop-shell" = {
+      active-hint = true;
+      stacking-with-mouse = false;
+      tile-by-default = true;
     };
     "org/gnome/desktop/wm/keybindings" = {
       activate-window-menu = [];
@@ -94,22 +184,6 @@ config,
       toggle-maximized = [];
       toggle-on-all-workspaces = [];
       unmaximize = [];
-    };
-    "org/gnome/shell/keybindings" = {
-      screenshot = [];
-      screenshot-window = [];
-      show-screen-recording-ui = [];
-      show-screenshot-ui = [];
-      switch-to-application-1 = [];
-      switch-to-application-2 = [];
-      switch-to-application-3 = [];
-      switch-to-application-4 = [];
-    };
-
-    "org/gnome/shell/extensions/pop-shell" = {
-      active-hint = true;
-      stacking-with-mouse = false;
-      tile-by-default = true;
     };
   };
 }
