@@ -38,10 +38,6 @@ config,
       disabled-extensions = [];
       enabled-extensions = ["pop-shell@system76.com"];
       favorite-apps = [
-        "org.gnome.Epiphany.desktop"
-        "org.gnome.Geary.desktop"
-        "org.gnome.Calendar.desktop"
-        "org.gnome.Music.desktop"
         "org.gnome.Nautilus.desktop"
       ];
       last-selected-power-profile = "power-saver";
