@@ -37,9 +37,9 @@ config,
       luasnip
       friendly-snippets
       {
-        plugin = cyberdream-nvim;
+        plugin = darkearth-nvim;
         config = ''
-        colorscheme cyberdream
+        colorscheme darkearth
         '';
       }
       {
