@@ -8,6 +8,7 @@ inputs @ { config, pkgs, vars, lib, ... }: {
     ./modules/bash
     ./modules/git
     ./modules/gnome/dconf.nix
+    ./modules/ranger
   ];
   home.username = vars.username;
   home.homeDirectory = "/home/${vars.username}";
