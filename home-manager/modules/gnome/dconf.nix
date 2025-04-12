@@ -5,6 +5,12 @@ config,
 }:
 {
   dconf.settings = {
+    "org/gnome/desktop/background" = {
+      picture-uri = "file://${config.home.homeDirectory}/Pictures/buffalo_trail.jpg";
+      picture-uri-dark = "file://${config.home.homeDirectory}/Pictures/buffalo_trail.jpg";
+      picture-options = "zoom";
+      color-shading-type = "solid";
+    };
     "org/gnome/shell" = {
       allow-extension-installation = true;
       always-show-log-out = false;

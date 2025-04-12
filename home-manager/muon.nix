@@ -25,5 +25,8 @@ inputs @ { config, pkgs, vars, ... }: {
     keepassxc
   ];
 
+
+  home.file."Pictures/buffalo_trail.jpg".source = ./modules/wallpapers/buffalo_trail.jpg;
+
   programs.home-manager.enable = true;
 }
