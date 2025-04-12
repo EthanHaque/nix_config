@@ -92,8 +92,56 @@ config,
     };
     "org/gnome/shell/extensions/pop-shell" = {
       active-hint = true;
-      stacking-with-mouse = false;
+      gap-inner = 2;
+      gap-outer = 2;
+      show-title = true;
+      show-skip-taskbar = true;
+      column-size = 64;
+      row-size = 64;
+      smart-gaps = false;
+      snap-to-grid = false;
       tile-by-default = true;
+
+      focus-left = ["<Super>Left" "<Super>KP_Left" "<Super>h"];
+      focus-down = ["<Super>Down" "<Super>KP_Down" "<Super>j"];
+      focus-up = ["<Super>Up" "<Super>KP_Up" "<Super>k"];
+      focus-right = ["<Super>Right" "<Super>KP_Right" "<Super>l"];
+
+      activate-launcher = ["<Super>slash"];
+      toggle-stacking = ["s"];
+      toggle-stacking-global = ["<Super>s"];
+      management-orientation = ["o"];
+      tile-enter = ["<Super>Return" "<Super>KP_Enter"];
+      tile-accept = ["Return" "KP_Enter"];
+      tile-reject = ["Escape"];
+      toggle-floating = ["<Super>g"];
+      toggle-tiling = ["<Super>y"];
+
+      tile-move-left = ["Left" "KP_Left" "h"];
+      tile-move-down = ["Down" "KP_Down" "j"];
+      tile-move-up = ["Up" "KP_Up" "k"];
+      tile-move-right = ["Right" "KP_Right" "l"];
+      tile-orientation = ["<Super>o"];
+
+      tile-resize-left = ["<Shift>Left" "<Shift>KP_Left" "<Shift>h"];
+      tile-resize-down = ["<Shift>Down" "<Shift>KP_Down" "<Shift>j"];
+      tile-resize-up = ["<Shift>Up" "<Shift>KP_Up" "<Shift>k"];
+      tile-resize-right = ["<Shift>Right" "<Shift>KP_Right" "<Shift>l"];
+
+      tile-swap-left = ["<Primary>Left" "<Primary>KP_Left" "<Primary>h"];
+      tile-swap-down = ["<Primary>Down" "<Primary>KP_Down" "<Primary>j"];
+      tile-swap-up = ["<Primary>Up" "<Primary>KP_Up" "<Primary>k"];
+      tile-swap-right = ["<Primary>Right" "<Primary>KP_Right" "<Primary>l"];
+
+      pop-workspace-down = ["<Super><Shift>Down" "<Super><Shift>KP_Down" "<Super><Shift>j"];
+      pop-workspace-up = ["<Super><Shift>Up" "<Super><Shift>KP_Up" "<Super><Shift>k"];
+      pop-monitor-down = ["<Super><Shift><Primary>Down" "<Super><Shift><Primary>KP_Down" "<Super><Shift><Primary>j"];
+      pop-monitor-up = ["<Super><Shift><Primary>Up" "<Super><Shift><Primary>KP_Up" "<Super><Shift><Primary>k"];
+      pop-monitor-left = ["<Super><Shift>Left" "<Super><Shift>KP_Left" "<Super><Shift>h"];
+      pop-monitor-right = ["<Super><Shift>Right" "<Super><Shift>KP_Right" "<Super><Shift>l"];
+
+      hint-color-rgba = "rgba(10, 184, 108, 1)";
+      log-level = 0;
     };
     "org/gnome/desktop/wm/keybindings" = {
       activate-window-menu = [];
