@@ -8,6 +8,7 @@ config,
     "org/gnome/shell" = {
       allow-extension-installation = true;
       always-show-log-out = false;
+      # Don't understand app-picker-layout option
       app-picker-layout = ''
         [{'org.gnome.Geary.desktop': <{'position': <0>}>,
           'org.gnome.Contacts.desktop': <{'position': <1>}>,
