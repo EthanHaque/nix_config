@@ -61,6 +61,8 @@
     packages = with pkgs; [ ];
   };
 
+  nix.settings.trusted-users = [ "muon" ];
+
   programs.nano.enable = false;
 
   nixpkgs.config.allowUnfree = true;
