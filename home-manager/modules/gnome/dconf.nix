@@ -87,15 +87,15 @@ config,
       switch-to-application-2 = [];
       switch-to-application-3 = [];
       switch-to-application-4 = [];
-      switch-to-application-5 = ["<Super>5"];
-      switch-to-application-6 = ["<Super>6"];
-      switch-to-application-7 = ["<Super>7"];
-      switch-to-application-8 = ["<Super>8"];
-      switch-to-application-9 = ["<Super>9"];
+      switch-to-application-5 = [];
+      switch-to-application-6 = [];
+      switch-to-application-7 = [];
+      switch-to-application-8 = [];
+      switch-to-application-9 = [];
       toggle-application-view = ["<Super>a"];
       toggle-message-tray = ["<Super>v" "<Super>m"];
       toggle-overview = [];
-      toggle-quick-settings = ["<Super>s"];
+      toggle-quick-settings = [];
     };
     "org/gnome/shell/extensions/pop-shell" = {
       active-hint = true;
@@ -115,14 +115,14 @@ config,
       focus-right = ["<Super>Right" "<Super>KP_Right" "<Super>l"];
 
       activate-launcher = ["<Super>slash"];
-      toggle-stacking = ["s"];
+      toggle-stacking = [];
       toggle-stacking-global = ["<Super>s"];
       management-orientation = ["o"];
       tile-enter = ["<Super>Return" "<Super>KP_Enter"];
       tile-accept = ["Return" "KP_Enter"];
       tile-reject = ["Escape"];
       toggle-floating = ["<Super>g"];
-      toggle-tiling = ["<Super>y"];
+      toggle-tiling = [];
 
       tile-move-left = ["Left" "KP_Left" "h"];
       tile-move-down = ["Down" "KP_Down" "j"];
@@ -180,18 +180,15 @@ config,
       move-to-side-n = [];
       move-to-side-s = [];
       move-to-side-w = [];
-      move-to-workspace-1 = [];
-      move-to-workspace-2 = [];
-      move-to-workspace-3 = [];
-      move-to-workspace-4 = [];
-      move-to-workspace-5 = [];
-      move-to-workspace-6 = [];
-      move-to-workspace-7 = [];
-      move-to-workspace-8 = [];
-      move-to-workspace-9 = [];
-      move-to-workspace-10 = [];
-      move-to-workspace-11 = [];
-      move-to-workspace-12 = [];
+      move-to-workspace-1 = ["<Super><Shift>1"];
+      move-to-workspace-2 = ["<Super><Shift>2"];
+      move-to-workspace-3 = ["<Super><Shift>3"];
+      move-to-workspace-4 = ["<Super><Shift>4"];
+      move-to-workspace-5 = ["<Super><Shift>5"];
+      move-to-workspace-6 = ["<Super><Shift>6"];
+      move-to-workspace-7 = ["<Super><Shift>7"];
+      move-to-workspace-8 = ["<Super><Shift>8"];
+      move-to-workspace-9 = ["<Super><Shift>9"];
       move-to-workspace-down = ["<Control><Shift><Alt>Down"];
       move-to-workspace-last = [];
       move-to-workspace-left = [];
