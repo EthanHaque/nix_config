@@ -16,7 +16,7 @@ config,
       fd
       pyright
       lua-language-server
-      nodePackages.prettier
+      biome
     ];
 
     plugins = with pkgs.vimPlugins; [
