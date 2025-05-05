@@ -83,6 +83,11 @@ config,
         type = "lua";
         config = builtins.readFile ./nvim/plugins/treesitter.lua;
       }
+      {
+        plugin = nvim-surround;
+        type = "lua";
+        config = builtins.readFile ./nvim/plugins/surround.lua;
+      }
       nvim-treesitter.withAllGrammars
       nvim-treesitter-textobjects
     ];
