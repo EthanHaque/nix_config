@@ -2,7 +2,6 @@ local nls = require("null-ls")
 
 nls.setup({
   sources = {
-    nls.builtins.formatting.dprint,
     nls.builtins.formatting.biome,
   },
   on_attach = function(client, bufnr)
