@@ -48,6 +48,11 @@ config,
         config = builtins.readFile ./nvim/plugins/comment.lua;
       }
       {
+        plugin = conform-nvim;
+        type = "lua";
+        config = builtins.readFile ./nvim/plugins/conform.lua;
+      }
+      {
         plugin = gitsigns-nvim;
         type = "lua";
         config = builtins.readFile ./nvim/plugins/gitsigns.lua;
