@@ -16,6 +16,7 @@ config,
       fd
       pyright
       lua-language-server
+      nodePackages.prettier
     ];
 
     plugins = with pkgs.vimPlugins; [
@@ -25,10 +26,14 @@ config,
         config = builtins.readFile ./nvim/plugins/autopairs.lua;
       }
       {
-        plugin =
-        nvim-cmp;
+        plugin = nvim-cmp;
         type = "lua";
         config = builtins.readFile ./nvim/plugins/cmp.lua;
+      }
+      {
+        plugin = none-ls-nvim;
+        type = "lua";
+        config = builtins.readFile ./nvim/plugins/none.lua;
       }
       cmp-nvim-lsp
       cmp-buffer
@@ -46,11 +51,6 @@ config,
         plugin = comment-nvim;
         type = "lua";
         config = builtins.readFile ./nvim/plugins/comment.lua;
-      }
-      {
-        plugin = conform-nvim;
-        type = "lua";
-        config = builtins.readFile ./nvim/plugins/conform.lua;
       }
       {
         plugin = gitsigns-nvim;
