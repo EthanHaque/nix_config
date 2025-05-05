@@ -8,9 +8,6 @@ lspconfig.biome.setup({
   root_dir = util.root_pattern("biome.json", ".git"),
   single_file_support = false,
   capabilities = lsp_capabilities,
-  on_attach = function(client) -- avoid double‑formatting
-    client.server_capabilities.documentFormattingProvider = false
-  end,
 })
 
 lspconfig.ruff.setup {
