@@ -4,7 +4,6 @@ nls.setup({
   sources = {
     nls.builtins.formatting.dprint,
     nls.builtins.formatting.biome,
-    -- …any other built‑ins or extras
   },
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then
