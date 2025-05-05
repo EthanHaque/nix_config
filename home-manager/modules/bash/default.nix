@@ -12,6 +12,7 @@ config,
       ll = "ls -l";
       la = "ls -a";
       lla = "ls -la";
+      g = "git";
     };
   };
 }
