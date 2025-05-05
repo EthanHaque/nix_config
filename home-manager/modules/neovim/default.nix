@@ -30,11 +30,6 @@ config,
         type = "lua";
         config = builtins.readFile ./nvim/plugins/cmp.lua;
       }
-      {
-        plugin = none-ls-nvim;
-        type = "lua";
-        config = builtins.readFile ./nvim/plugins/none.lua;
-      }
       cmp-nvim-lsp
       cmp-buffer
       cmp-path
