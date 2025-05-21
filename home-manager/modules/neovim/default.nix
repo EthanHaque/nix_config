@@ -17,6 +17,7 @@ config,
       pyright
       lua-language-server
       biome
+      ccls
     ];
 
     plugins = with pkgs.vimPlugins; [

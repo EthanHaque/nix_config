@@ -37,6 +37,6 @@ lspconfig.pyright.setup({
 lspconfig.lua_ls.setup({
   capabilities = lsp_capabilities,
 })
-lspconfig.clangd.setup({
+lspconfig.ccls.setup({
   capabilities = lsp_capabilities,
 })
