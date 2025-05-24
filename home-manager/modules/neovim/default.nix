@@ -18,6 +18,8 @@ config,
       lua-language-server
       biome
       ccls
+      emmet-ls
+      eslint
     ];
 
     plugins = with pkgs.vimPlugins; [
@@ -37,6 +39,7 @@ config,
       cmp_luasnip
       luasnip
       friendly-snippets
+      plenary-nvim
       {
         plugin = cyberdream-nvim;
         config = ''
@@ -67,6 +70,11 @@ config,
         plugin = telescope-nvim;
         type = "lua";
         config = builtins.readFile ./nvim/plugins/telescope.lua;
+      }
+      {
+        plugin = typescript-tools-nvim;
+        type = "lua";
+        config = builtins.readFile ./nvim/plugins/typescripttools.lua;
       }
       telescope-fzf-native-nvim
       {

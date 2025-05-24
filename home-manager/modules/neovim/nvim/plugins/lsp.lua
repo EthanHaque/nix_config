@@ -40,3 +40,9 @@ lspconfig.lua_ls.setup({
 lspconfig.ccls.setup({
   capabilities = lsp_capabilities,
 })
+lspconfig.emmet_ls.setup({
+  capabilities = lsp_capabilities,
+})
+lspconfig.eslint.setup({
+  capabilities = lsp_capabilities,
+})
