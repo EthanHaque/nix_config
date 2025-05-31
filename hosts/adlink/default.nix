@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib,... }:
 {
   imports =
     [
@@ -15,7 +15,6 @@
 
 
   networking.hostName = "gluon";
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   networking.networkmanager.enable = true;
 
   time.timeZone = "America/New_York";
@@ -99,11 +98,26 @@
     packages = with pkgs; [ ];
   };
 
-  nix.settings.trusted-users = [ "muon" ];
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    trusted-users = [ "muon" ];
+    substituters = [
+      "https://cache.nixos.org/"
+      "https://nix-community.cachix.org"
+    ];
+    trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+    stalled-download-timeout = 500;
+  };
+
+  nixpkgs.config = {
+    allowUnfree = true;
+    cudaSupport = true;
+    cudaCapabilities = [ "8.9" ];
+  };
 
   programs.nano.enable = false;
-
-  nixpkgs.config.allowUnfree = true;
 
   environment.variables.EDITOR = "vim";
   environment.systemPackages = with pkgs; [
