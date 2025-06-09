@@ -60,6 +60,26 @@
           }
         ];
       };
+      tau = nixpkgs.lib.nixosSystem rec {
+        specialArgs = {
+          inherit inputs;
+          vars = {
+            username = "neutrino";
+          };
+        };
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/powerspec
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.neutrino = import ./home-manager/neutrino.nix;
+            home-manager.extraSpecialArgs = specialArgs;
+            home-manager.backupFileExtension = "backup";
+          }
+        ];
+      };
     };
   };
 }
