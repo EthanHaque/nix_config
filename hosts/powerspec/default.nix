@@ -10,7 +10,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "tau"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -40,12 +40,9 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
+  services.xserver.excludePackages = [ pkgs.xterm ];
   services.xserver.xkb = {
     layout = "us";
     variant = "";
@@ -78,19 +75,51 @@
     isNormalUser = true;
     description = "neutrino";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
+    packages = with pkgs; [ ];
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
+  programs.nano.enable = false;
+  programs.steam.enable = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  nixpkgs.config.allowUnfree = true;
+
+  environment.variables.EDITOR = "vim";
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    vim
+    docker-compose
+  ];
+
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+  ];
+
+
+
+  environment.gnome.excludePackages = with pkgs; [
+    orca
+    evince
+    geary
+    gnome-backgrounds
+    gnome-tour
+    gnome-user-docs
+    baobab
+    epiphany
+    gnome-text-editor
+    gnome-calculator
+    gnome-calendar
+    gnome-console
+    gnome-contacts
+    gnome-font-viewer
+    gnome-logs
+    gnome-maps
+    gnome-music
+    gnome-system-monitor
+    gnome-weather
+    gnome-connections
+    simple-scan
+    snapshot
+    yelp
+    gnome-software
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
