@@ -52,6 +52,8 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  virtualisation.docker.enable = true;
+
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -75,7 +77,7 @@
   users.users.neutrino = {
     isNormalUser = true;
     description = "neutrino";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [ ];
   };
 
