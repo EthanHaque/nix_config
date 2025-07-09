@@ -1,10 +1,20 @@
 {
-pkgs,
-config,
-...
+  pkgs,
+  config,
+  ...
 }:
 let
   wallpaper = "~/Pictures/forest_rays.jpg";
+
+  colors = {
+    dark   = "1a1917";
+    text   = "D4BE98";
+    green  = "2E8B57";
+    blue   = "87CEEB";
+    purple = "8A2BE2";
+    fail   = "E95678";
+  };
+
 in
 {
   programs.hyprlock = {
@@ -39,17 +49,17 @@ in
           monitor = "";
 
           size = "300, 50";
-          valign = "bottom";
-          position = "0%, 10%";
+          valign = "center";
+          position = "0%, -5%";
 
           outline_thickness = 1;
 
           font_family = "JetBrainsMono Nerd Font";
-          font_color = "rgb(0f4a0a)";
-          outer_color = "rgba(180, 180, 180, 0.5)";
-          inner_color = "rgba(200, 200, 200, 0.1)";
-          check_color = "rgba(247, 193, 19, 0.5)";
-          fail_color = "rgba(255, 106, 134, 0.5)";
+          font_color = "rgb(${colors.text})";
+          outer_color = "rgb(${colors.green})";
+          inner_color = "rgb(${colors.dark})";
+          check_color = "rgb(${colors.blue})";
+          fail_color = "rgb(${colors.fail})";
 
           fade_on_empty = false;
           placeholder_text = "Enter Password";
@@ -69,10 +79,10 @@ in
           monitor = "";
           text = "$TIME";
           font_size = 150;
-          font_family = "JetBrainsMono Nerd Font";
-          color = "rgb(0f4a0a)";
+          font_family = "JetBrainsMono Nerd Font ExtraBold";
+          color = "rgb(${colors.green})";
 
-          position = "0%, 30%";
+          position = "0%, 10%";
 
           valign = "center";
           halign = "center";
@@ -87,9 +97,9 @@ in
           text = "cmd[update:3600000] date +'%a %b %d'";
           font_size = 20;
           font_family = "JetBrainsMono Nerd Font";
-          color = "rgb(0f4a0a)";
+          color = "rgb(${colors.text})";
 
-          position = "0%, 40%";
+          position = "0%, 20%";
 
           valign = "center";
           halign = "center";
