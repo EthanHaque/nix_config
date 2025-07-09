@@ -186,6 +186,7 @@
           "on-click-right" = "playerctl stop";
           "smooth-scrolling-threshold" = 10;
           "on-scroll-down" = "playerctl previous";
+          "on-scroll-up" = "playerctl next";
         };
         "systemd-failed-units" = {
           format = "✗ {nr_failed}";

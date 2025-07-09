@@ -17,6 +17,7 @@ in
     settings = {
       exec-once = [
         "hyprpaper"
+        "waybar"
       ];
 
       monitor=[

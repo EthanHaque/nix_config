@@ -105,7 +105,7 @@ config,
           actions = [
             {
               label = " ";
-              command = "nm-connection-editor";
+              command = "kitty nmtui";
             }
             {
               label = "";
@@ -114,6 +114,10 @@ config,
             {
               label = "";
               command = "firefox";
+            }
+            {
+              label = "󱂵";
+              command = "nautilus";
             }
           ];
         };

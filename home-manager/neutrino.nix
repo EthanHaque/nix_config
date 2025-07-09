@@ -29,6 +29,9 @@ inputs @ { config, pkgs, vars, lib, ... }: {
     bat
     lsd
     keepassxc
+    networkmanager
+    blueman
+    playerctl
   ];
 
   home.file."Pictures/buffalo_trail.jpg".source = ./modules/wallpapers/buffalo_trail.jpg;
