@@ -39,7 +39,6 @@ config,
       widgets = [
         "menubar"
         "buttons-grid"
-        "backlight"
         "volume"
         "mpris"
         "inhibitors"
@@ -65,11 +64,6 @@ config,
           image-size = 96;
           image-radius = 6;
         };
-        backlight = {
-          label = "🔆";
-          device = "intel_backlight";
-          min = 1;
-        };
         volume = {
           label = "🔊";
         };
@@ -91,10 +85,6 @@ config,
                 command = "hyprctl dispatch exit";
               }
               {
-                label = "  Suspend";
-                command = "systemctl suspend";
-              }
-              {
                 label = "  Shut down";
                 command = "systemctl poweroff";
               }
@@ -105,8 +95,8 @@ config,
             position = "left";
             actions = [
               {
-                label = "  Swaync Github";
-                command = "firefox-developer-edition https://github.com/ErikReider/SwayNotificationCenter";
+                label = "  My Github";
+                command = "firefox https://github.com/EthanHaque";
               }
             ];
           };
@@ -122,20 +112,8 @@ config,
               command = "blueman-manager";
             }
             {
-              label = "󰸉";
-              command = "waypaper";
-            }
-            {
-              label = " ";
-              command = "vlc";
-            }
-            {
-              label = "";
-              command = "ghostty -e paru";
-            }
-            {
               label = "";
-              command = "firefox-developer-edition";
+              command = "firefox";
             }
           ];
         };
