@@ -1,201 +1,228 @@
+/* Global Styles */
 * {
     border: none;
-    border-radius: 0px;
-    font-family: Material, Montserrat, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    min-height: 0;
-
+    border-radius: 10px;
+    font-family: FiraCode Nerd Font;
+    font-weight: bold;
+    font-size: 0.8rem;
+    min-height: 20px;
+    margin: 0px;
+    padding: 0.5px;
 }
 
-window#waybar {
+/* Module Styles */
+.module {
+    padding: 0px 10px;
+    margin: 1px 1px;
+}
 
-    background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
-    color: #ffffff;
-    transition-property: background-color;
-    transition-duration: .5s;
+/* Special Case: Left Margin for First Module in Left Section */
+.modules-left>widget:first-child .module {
+    margin-left: 5px;
+}
+
+/* Special Case: Right Margin for Last Module in Right Section */
+.modules-right>widget:last-child .module {
+    margin-right: 5px;
+}
+
+/* Window Styling */
+window#waybar {
+    background-color: transparent;
+    color: black;
+    transition: background-color 0.5s;
+}
+
+/* Make window module transparent when no windows present */
+window#waybar.empty #window {
+    background-color: transparent;
+    background: transparent;
 }
 
 window#waybar.hidden {
     opacity: 0.2;
 }
 
-#workspaces {
-	padding: 10px;
-    margin-right: 0px;
-	border-radius: 20px;
-    opacity: 0.88;
+/* Tooltip styling */
+menu,
+tooltip {
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 10px;
+    /* border: 0px solid; */
+    /* border-image: linear-gradient(45deg, #FA8BFF, #2BD2FF) 1; */
+    padding: 5px;
+    box-shadow: 0 0 0 1px;
 }
 
+menu label,
+tooltip label {
+    color: rgb(0, 238, 255);
+}
+
+/* Workspaces Button Styling */
 #workspaces button {
-    color: #131313;
-    border-radius: 20px;
-    font-weight:bold;
-    margin: 0px;
-	padding: 5px;
-    border-bottom: 3px solid #ffffff;
-
+    color: rgb(0, 238, 255);
+    background: transparent;
+    font-weight: bolder;
+    box-shadow: inset 0 -3px transparent;
+    transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+    padding: 0 5px;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-#workspaces button:hover {
-    background: lightblue;
-    color: #131313;
-    border-bottom: 3px solid #ffffff;
-
+#workspaces button.active {
+    color: black;
+    border-bottom: 2px solid transparent;
+    /* border-top: 2px solid transparent; */
+    border-image: linear-gradient(45deg, #FA8BFF, #2BD2FF) 1;
+    padding: 0 10px;
 }
 
 #workspaces button.focused {
-    background: #1f1f1f;
-    color: white;
-    border-bottom: 3px solid #ffffff;
-
+    background: black;
 }
 
-#workspaces button.focused:hover {
-    background: lightblue;
-    color: black;
-    border-bottom: 3px solid #ffffff;
-
+#workspaces button.visible {
+    color: rgb(0, 238, 255);
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+    background: red;
+    color: black;
+    padding: 0 5px;
 }
 
-#mode {
-    background-color: #64727D;
-    border-bottom: 3px solid #ffffff;
+#workspaces button:hover {
+    background: black;
+    border: 1px solid transparent;
+    border-image: linear-gradient(45deg, #FA8BFF, #2BD2FF) 1;
+    padding: 0 5px;
 }
 
-#clock,
-#battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
+/* Taskbar Button Styling */
+#taskbar button {
+    padding: 0 1px;
+}
+
+#taskbar button.active {
+    background: black;
+    border-bottom: 2px solid transparent;
+    /* border-top: 2px solid transparent; */
+    border-image: linear-gradient(45deg, #FA8BFF, #2BD2FF) 1;
+    padding: 0 5px;
+}
+
+#taskbar button:hover {
+    background: black;
+    border: 1px solid transparent;
+    border-image: linear-gradient(45deg, #FA8BFF, #2BD2FF) 1;
+    padding: 0 5px;
+}
+
+/* Transparent Modules When Empty */
+#taskbar.empty,
+window#waybar.empty {
+    background-color: transparent;
+}
+
+/* Specific Module Styles */
 #backlight,
-#network,
-#pulseaudio,
-#custom-media,
-#custom-launcher,
-#custom-power,
-#tray,
-#mode,
+#cpu,
 #idle_inhibitor,
-#custom-updater,
-#custom-snip,
-#mpd {
-    padding: 0 10px;
-    color: black;
-}
-
-#custom-updater,
-#custom-launcher,
-#pulseaudio,
-#custom-snip,
-#custom-power{
-    font-size: 20px;
-}
-
-#window,
+#bluetooth,
+#memory,
+#battery,
+#temperature,
+#custom-updates,
+#clock,
+#privacy,
+#network,
+#wireplumber,
+#keyboard-state,
+#custom-notification,
+#taskbar,
+#user,
+#systemd-failed-units,
+#power,
+#load,
+#jack,
+#cpu-load,
+#image,
 #workspaces {
-    margin: 0px 4px;
+    background-color: black;
+    color: rgb(0, 238, 255);
 }
 
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0px;
+#power {
+    margin-right: 5px;
 }
 
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 0px;
+#temperature.critical {
+    background-color: red;
 }
 
-#clock {
+#network.disconnected,
+#wireplumber.muted {
+    color: red;
+}
+
+#battery.charging,
+#battery.plugged {
     color: black;
-    margin-right: 4px;
-}
-
-#battery {
-    color: #000000;
-}
-
-#battery.charging, #battery.plugged {
-    color: #ffffff;
-    background-color: #26A65B;
+    background: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #FA8BFF 90%);
 }
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
-        color: #000000;
+        background-color: black;
+        color: red;
     }
 }
 
+#battery.warning:not(.charging),
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+    background-color: red;
+    color: black;
 }
 
+#battery.warning:not(.charging) {
+    animation: blink 1s linear infinite alternate;
+}
+
+#battery.critical:not(.charging) {
+    animation: blink 0.5s linear infinite alternate;
+}
+
+/* Focused Label Background */
 label:focus {
-    background-color: #000000;
+    background-color: black;
 }
 
-#network.disconnected {
-    color: red;
+/* Keyboard State Styles */
+#keyboard-state>label {
+    padding: 0 5px;
 }
 
-#pulseaudio {
-
-    color: black;
-}
-
-#pulseaudio.muted {
-
-    color: red;
-}
-
-
-#temperature.critical {
-    background-color: #eb4d4b;
-}
-
-#tray {
-    color: black;
-}
-
-#tray > .passive {
-    -gtk-icon-effect: dim;
-    color: black;
-}
-
-#tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    color: black;
-}
-
-
-#language {
-    color: black;
-    min-width: 16px;
-}
-
-#keyboard-state {
-    background: #97e1ad;
-    color: #000000;
-    min-width: 16px;
-}
-
-#keyboard-state > label {
-    padding: 0px 5px;
-}
-
-#keyboard-state > label.locked {
+#keyboard-state>label.locked {
     background: rgba(0, 0, 0, 0.2);
+}
+
+/* Tray Styles */
+#tray {
+    background-color: black;
+}
+
+#tray>.passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray>.needs-attention {
+    -gtk-icon-effect: highlight;
+    padding: 0 5px;
+    background-color: red;
+}
+
+/* Gradient Module Styles */
+#mpris,
+#window {
+    background: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #FA8BFF 90%);
 }
