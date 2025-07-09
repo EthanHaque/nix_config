@@ -7,6 +7,7 @@ config,
 {
   programs.waybar = {
     enable = true;
+    style = builtins.readFile ./style.css;
     settings = [{
       layer = "top";
       position = "top";
@@ -18,7 +19,6 @@ config,
       modules-left = [
         "hyprland/workspaces"
         "custom/divider"
-        "custom/divider"
         "cpu"
         "custom/divider"
         "memory"
@@ -28,11 +28,7 @@ config,
         "tray"
         "network"
         "custom/divider"
-        "backlight"
-        "custom/divider"
         "pulseaudio"
-        "custom/divider"
-        "battery"
         "custom/divider"
         "clock"
       ];
@@ -43,7 +39,6 @@ config,
         all-outputs = true;
         on-click = "activate";
       };
-      battery = { format = "󰁹 {}%"; };
       cpu = {
         interval = 10;
         format = "󰻠 {}%";
@@ -55,10 +50,6 @@ config,
         format = "  {}%";
         format-alt = " {used:0.1f}G";
         max-length = 10;
-      };
-      backlight = {
-        format = "󰖨 {}";
-        device = "acpi_video0";
       };
       tray = {
         icon-size = 13;
