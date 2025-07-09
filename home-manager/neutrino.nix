@@ -11,6 +11,7 @@ inputs @ { config, pkgs, vars, lib, ... }: {
     ./modules/gtk
     ./modules/ranger
     ./modules/hyprland
+    ./modules/waybar
   ];
   home.username = vars.username;
   home.homeDirectory = "/home/${vars.username}";
