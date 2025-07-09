@@ -18,8 +18,6 @@
         "reload_style_on_change" = true;
 
         modules-left = [
-          "custom/updates"
-          "keyboard-state"
           "clock"
           "bluetooth"
           "network"
@@ -31,7 +29,6 @@
           "mpris"
           "mpd"
           "wireplumber"
-          "temperature"
           "group/cpu-load"
           "memory"
           "systemd-failed-units"
@@ -113,13 +110,6 @@
           "tooltip-format-enumerate-connected" = "{device_alias}\t{device_address}";
           "tooltip-format-enumerate-connected-battery" = "{device_alias}\t{device_address}\t{device_battery_percentage}%";
         };
-        temperature = {
-          "critical-threshold" = 80;
-          format = "{icon} {temperatureC}°C";
-          "format-alt" = "{temperatureF}°F {icon}";
-          "format-icons" = [ "" "" "" ];
-          tooltip = false;
-        };
         "hyprland/window" = {
           format = "{}";
           "max-length" = 50;
@@ -127,15 +117,6 @@
             "(.*) — Mozilla Firefox" = "🌎 $1";
           };
           "separate-outputs" = true;
-        };
-        "keyboard-state" = {
-          numlock = true;
-          capslock = true;
-          format = "  {name} {icon}";
-          "format-icons" = {
-            locked = "";
-            unlocked = "";
-          };
         };
         privacy = {
           "icon-spacing" = 4;
@@ -157,7 +138,7 @@
           "tooltip-format-wifi" = "{frequency} MHz ({signalStrength}%)";
           "tooltip-format-ethernet" = "{ipaddr}/{cidr}  {bandwidthUpBytes}  {bandwidthDownBytes}";
           "tooltip-format-disconnected" = "Disconnected ⚠";
-          "max-length" = 50;
+          "max-length" = 72;
           "format-icons" = [ "󰤯 " "󰤟 " "󰤢 " "󰤢 " "󰤨 " ];
         };
         clock = {
@@ -294,13 +275,4 @@
       }
     ];
   };
-
-  home.packages = with pkgs; [
-    pavucontrol
-    qpwgraph
-    # For media player controls
-    playerctl
-    # For notifications
-    swaynotificationcenter
-  ];
 }

@@ -114,7 +114,7 @@
   users.users.neutrino = {
     isNormalUser = true;
     description = "neutrino";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "input" ];
     packages = with pkgs; [ ];
   };
 

@@ -11,6 +11,11 @@ let
   wallpaper = "~/Pictures/buffalo_trail.jpg";
 in
 {
+  home.packages = with pkgs; [
+    # For notifications
+    swaynotificationcenter
+  ];
+
   services.hyprpaper = {
     enable = true;
     settings = {
