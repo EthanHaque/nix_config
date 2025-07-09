@@ -1,13 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  # -------------------------------------------------------------------
-  # 1. Waybar Configuration
-  # -------------------------------------------------------------------
   programs.waybar = {
     enable = true;
     style = builtins.readFile ./style.css;
-    # settings is a list of attribute sets, one for each bar
     settings = [
       # ------------------- Top Bar -------------------
       {
@@ -42,7 +38,6 @@
           "group/power"
         ];
 
-        # --- Group Configurations ---
         "group/power" = {
           orientation = "inherit";
           drawer = {
@@ -250,7 +245,6 @@
             "title<.*youtube.*>" = " ";
             "class<firefox>" = "";
             "class<Postman>" = "";
-            # Add all your other window rewrite rules here
           };
           "on-scroll-up" = "hyprctl dispatch workspace m-1 > /dev/null";
           "on-scroll-down" = "hyprctl dispatch workspace m+1 > /dev/null";
@@ -301,9 +295,6 @@
     ];
   };
 
-  # -------------------------------------------------------------------
-  # 2. Required Packages
-  # -------------------------------------------------------------------
   home.packages = with pkgs; [
     pavucontrol
     qpwgraph
