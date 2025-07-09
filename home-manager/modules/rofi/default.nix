@@ -7,7 +7,8 @@ config,
 {
   programs.rofi = {
     enable = true;
-    config = {
+    theme = ./theme.rasi;
+    extraConfig = {
       modes = "combi,drun,recursivebrowser,filebrowser,window,run,ssh,keys";
       combi-modes = "drun,filebrowser";
       show-icons = true;
@@ -16,7 +17,7 @@ config,
       filter = "";
       scroll-method = 0;
       normalize-match = true;
-      terminal = "Ghostty";
+      terminal = "kitty";
       preview-cmd = "rofi-preview -m {mode} -i {input}";
       hover-select = true;
       steal-focus = false;
@@ -40,19 +41,11 @@ config,
       drun-show-actions = true;
       drun-url-launcher = "xdg-open";
       drun-match-fields = "name,generic,exec,categories,keywords";
-      "drun" = {
-        scan-desktop = false;
-        parse-user = false;
-      };
 
       # Run
       run-command = "{cmd}";
       run-list-command = "";
       run-shell-command = "{terminal} -e {cmd}";
-      "run" = {
-        # Make sure this path is accessible on your system
-        fallback-icon = "/home/sujan/dotfiles/.config/rofi/icons/icons8-script-listener-64.png";
-      };
 
       # Window Switcher
       window-command = "wmctrl -i -R {window}";
@@ -64,31 +57,6 @@ config,
       ssh-command = "{terminal} -e {ssh-client} {host} [-p {port}]";
       parse-hosts = true;
       parse-known-hosts = true;
-      "ssh" = {
-        fallback-icon = "/home/sujan/dotfiles/.config/rofi/icons/icons8-ssh-64.png";
-      };
-
-      # File browser
-      "filebrowser" = {
-        directory = "$HOME";
-        directories-first = true;
-        sorting-method = "name";
-        show-hidden = true;
-        fallback-icon = "/home/sujan/dotfiles/.config/rofi/icons/icons8-question-mark-64.png";
-      };
-
-      # Recursive File browser
-      "recursivebrowser" = {
-        directory = "$HOME";
-        filter-regex = "(.*cache.*|.*\\.o)";
-        command = "xdg-open";
-        fallback-icon = "/home/sujan/dotfiles/.config/rofi/icons/icons8-search-file-64.png";
-      };
-
-      # Keys
-      "keys" = {
-        fallback-icon = "/home/sujan/dotfiles/.config/rofi/icons/icons8-keyboard-64.png";
-      };
 
       # History and Sorting
       disable-history = false;
