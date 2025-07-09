@@ -33,6 +33,7 @@ inputs @ { config, pkgs, vars, lib, ... }: {
     networkmanager
     blueman
     playerctl
+    wl-clipboard
   ];
 
   home.file."Pictures/buffalo_trail.jpg".source = ./modules/wallpapers/buffalo_trail.jpg;
