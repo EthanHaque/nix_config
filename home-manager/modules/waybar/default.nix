@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  home.packages = with pkgs; [
+    # For notifications
+    swaynotificationcenter
+  ];
   programs.waybar = {
     enable = true;
     style = builtins.readFile ./style.css;
