@@ -1,5 +1,11 @@
+
 * {
-    dark:#0f0f0f;
+    dark:#10101a;
+    cyan:#00ffff;
+    magenta:#ff00ff;
+    lime:#32cd32;
+    fg:#c0caf5;
+
     red:#ea6962;
     red-alt:#ca3433;
     orange:#e78a4e;
@@ -20,11 +26,11 @@
     spacing:0;
     vertical-align: 0.5;
 
-    text-color: @cream;
-    border-color:@yellow;
+    text-color: @fg;
+    border-color:@magenta;
     background-color:@transparent;
 
-    font:"JetBrainsMono Nerd Font 11";
+    font:"JetbrainsMono Nerd Font 11";
 }
 
 configuration {
@@ -37,8 +43,9 @@ configuration {
 window {
     width: 25%;
     location: center;
-    background-color: @dark-grey;
+    background-color: @dark;
     orientaion: horizontal;
+    border: 2px;
 }
 
 mainbox {
@@ -47,25 +54,26 @@ mainbox {
 
 inputbar {
     margin: 8px 8px 3px 8px;
-    background-color: @yellow;
+    background-color: @dark;
+    border: 1px;
     children: [prompt,entry];
 }
 
 prompt {
     padding: 5px;
     margin: 2px;
-    background-color: @dark-grey;
-    text-color: @aqua;
-    font:"JetBrainsMono Nerd Font 13";
+    background-color: @dark;
+    text-color: @cyan;
+    font:"JetbrainsMono Nerd Font Bold 13";
 }
 
 entry {
     padding:5px;
     margin:2px;
-    border-color:@grey;
-    background-color:@dark-grey;
-    text-color:@red;
-    font:"Roboto Condensed Bold 13";
+    border-color:@dark;
+    background-color:@dark;
+    text-color:@fg;
+    font:"JetbrainsMono Nerd Font Bold 13";
 }
 
 listview {
@@ -73,7 +81,7 @@ listview {
     padding:8px;
     border: 2px;
     margin:8px;
-    background-color:@dark-grey;
+    background-color:@dark;
     children:[element];
 }
 element {
@@ -94,17 +102,17 @@ element-icon{
 }
 
 element selected {
-    background-color: @yellow;
+    background-color: @cyan;
     text-color: @dark;
 }
 
 element selected active {
-    background-color: @red-alt;
+    background-color: @lime;
 }
 
 message {
     expand:true;
-    background-color: @dark-grey;
+    background-color: @dark;
     children: [textbox];
 }
 
@@ -112,14 +120,14 @@ message {
 textbox {
     expand: true;
     padding:3px;
-    background-color:@red-alt;
-    text-color:@dark-grey;
+    background-color:@magenta;
+    text-color:@dark;
 }
 
 error-message {
     expand: true;
     border: 2px;
     padding:5px;
-    background-color: @dark-grey;
-    text-color:@dark;
+    background-color: @dark;
+    text-color:@magenta;
 }
