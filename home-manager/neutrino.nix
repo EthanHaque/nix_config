@@ -10,6 +10,7 @@ inputs @ { config, pkgs, vars, lib, ... }: {
     ./modules/gnome/dconf.nix
     ./modules/gtk
     ./modules/ranger
+    ./modules/hyprland
   ];
   home.username = vars.username;
   home.homeDirectory = "/home/${vars.username}";
@@ -29,13 +30,6 @@ inputs @ { config, pkgs, vars, lib, ... }: {
   home.file."Pictures/buffalo_trail.jpg".source = ./modules/wallpapers/buffalo_trail.jpg;
 
   programs.kitty.font.size = lib.mkForce 10;
-
-
-  wayland.windowManager.hyprland = {
-    enable = true;
-    package = null;
-    xwayland.enable = true;
-  };
 
   programs.home-manager.enable = true;
 }
