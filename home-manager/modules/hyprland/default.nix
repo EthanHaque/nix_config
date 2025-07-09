@@ -33,11 +33,11 @@ in
       ];
 
       general = {
-        gaps_in = 5;
-        gaps_out = 20;
+        gaps_in = 2;
+        gaps_out = 2;
         border_size = 2;
-        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        "col.inactive_border" = "rgba(595959aa)";
+        "col.active_border" = "rgba(2E8B57ee) rgba(FFBF00ee) 45deg";
+        "col.inactive_border" = "rgba(1a1917aa)";
         resize_on_border = false;
         allow_tearing = false;
         layout = "dwindle";
@@ -45,14 +45,18 @@ in
 
       decoration = {
         rounding = 10;
-        active_opacity = 1.0;
         inactive_opacity = 1.0;
-        shadow.enabled = true;
+        active_opacity = 1.0;
+        dim_inactive = true;
+        dim_strength = 0.1;
         blur = {
-          enabled = true;
-          size = 3;
-          passes = 1;
-          vibrancy = 0.1696;
+          enabled = false;
+          size = 10;
+          passes = 3;
+          new_optimizations = true;
+          ignore_opacity = true;
+          noise = 0;
+          brightness = 0.90;
         };
       };
 
@@ -196,7 +200,7 @@ in
       windowrulev2 = [
         "suppressevent maximize, class:.*"
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
-        # Example: "float,class:^(kitty)$,title:^(kitty)$"
+        "opacity 1.0 override 1.0 override,class:^(firefox)$"
       ];
     };
   };
