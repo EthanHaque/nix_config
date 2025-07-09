@@ -45,7 +45,7 @@ in
           path = "${wallpaper}";
           blur_passes = 2;
           contrast = 1;
-          brightness = 0.5;
+          brightness = 0.8;
           vibrancy = 0.2;
         }
       ];
@@ -60,6 +60,7 @@ in
 
           outline_thickness = 1;
 
+          font_family = "JetBrainsMono Nerd Font";
           font_color = "rgb(0f4a0a)";
           outer_color = "rgba(180, 180, 180, 0.5)";
           inner_color = "rgba(200, 200, 200, 0.1)";
@@ -84,6 +85,7 @@ in
           monitor = "";
           text = "$TIME";
           font_size = 150;
+          font_family = "JetBrainsMono Nerd Font";
           color = "rgb(0f4a0a)";
 
           position = "0%, 30%";
@@ -100,6 +102,7 @@ in
           monitor = "";
           text = "cmd[update:3600000] date +'%a %b %d'";
           font_size = 20;
+          font_family = "JetBrainsMono Nerd Font";
           color = "rgb(0f4a0a)";
 
           position = "0%, 40%";
