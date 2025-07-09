@@ -120,6 +120,7 @@ in
         "$mainMod, T, exec, ${terminal}"
         "$mainMod, F, exec, ${browser}"
         "$mainMod, B, exec, ${fileManager}"
+        "$mainMod, W, killactive,"
         "$mainMod, M, exit,"
         "$mainMod, V, togglefloating,"
         "$mainMod, P, pseudo,"
