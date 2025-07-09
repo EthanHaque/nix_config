@@ -6,6 +6,7 @@ config,
 {
   services.swaync = {
     enable = true;
+    style = builtins.readFile ./style.css;
     settings = {
       positionX = "right";
       positionY = "bottom";
