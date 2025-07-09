@@ -14,6 +14,7 @@ inputs @ { config, pkgs, vars, lib, ... }: {
     ./modules/hyprlock
     ./modules/hyprpaper
     ./modules/waybar
+    ./modules/swaync
   ];
   home.username = vars.username;
   home.homeDirectory = "/home/${vars.username}";
