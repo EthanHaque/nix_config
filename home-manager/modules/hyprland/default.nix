@@ -8,7 +8,7 @@ let
   fileManager = "nautilus";
   browser = "firefox";
   menu = "rofi -show drun";
-  wallpaper = "~/Pictures/buffalo_trail.jpg";
+  wallpaper = "~/Pictures/forst_rays.jpg";
 in
 {
   wayland.windowManager.hyprland = {

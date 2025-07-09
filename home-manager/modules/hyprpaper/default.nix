@@ -4,7 +4,7 @@ config,
 ...
 }:
 let
-  wallpaper = "~/Pictures/buffalo_trail.jpg";
+  wallpaper = "~/Pictures/forest_rays.jpg";
 in
 {
   services.hyprpaper = {

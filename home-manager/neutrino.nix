@@ -36,6 +36,7 @@ inputs @ { config, pkgs, vars, lib, ... }: {
   ];
 
   home.file."Pictures/buffalo_trail.jpg".source = ./modules/wallpapers/buffalo_trail.jpg;
+  home.file."Pictures/forest_rays.jpg".source = ./modules/wallpapers/forest_rays.jpg;
 
   programs.kitty.font.size = lib.mkForce 10;
 

@@ -1,10 +1,10 @@
 
 * {
-    dark:#10101a;
-    cyan:#00ffff;
-    magenta:#ff00ff;
-    lime:#32cd32;
-    fg:#c0caf5;
+    dark:#1a1917;
+    forest-green:#2E8B57;
+    amber:#FFBF00;
+    sky-blue:#87CEEB;
+    fg:#D4BE98;
 
     red:#ea6962;
     red-alt:#ca3433;
@@ -27,7 +27,7 @@
     vertical-align: 0.5;
 
     text-color: @fg;
-    border-color:@magenta;
+    border-color:@amber;
     background-color:@transparent;
 
     font:"JetbrainsMono Nerd Font 11";
@@ -37,7 +37,6 @@ configuration {
     display-drun: " Apps ";
     display-run: " Cmd: ";
     display-window: " Win : ";
-    drun-match-fields: "name,generic,exec,categories,keywords";
 }
 
 window {
@@ -63,7 +62,7 @@ prompt {
     padding: 5px;
     margin: 2px;
     background-color: @dark;
-    text-color: @cyan;
+    text-color: @forest-green;
     font:"JetbrainsMono Nerd Font Bold 13";
 }
 
@@ -102,12 +101,12 @@ element-icon{
 }
 
 element selected {
-    background-color: @cyan;
+    background-color: @forest-green;
     text-color: @dark;
 }
 
 element selected active {
-    background-color: @lime;
+    background-color: @sky-blue;
 }
 
 message {
@@ -120,7 +119,7 @@ message {
 textbox {
     expand: true;
     padding:3px;
-    background-color:@magenta;
+    background-color:@amber;
     text-color:@dark;
 }
 
@@ -129,5 +128,5 @@ error-message {
     border: 2px;
     padding:5px;
     background-color: @dark;
-    text-color:@magenta;
+    text-color:@amber;
 }
