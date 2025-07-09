@@ -8,12 +8,29 @@ let
   fileManager = "nautilus";
   browser = "firefox";
   menu = "rofi -show drun";
+  wallpaper = "~/Pictures/buffalo_trail.jpg";
 in
 {
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      preload = [
+        "${wallpaper}"
+      ];
+      wallpaper = [
+        ",${wallpaper}"
+      ];
+    };
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     package = null;
     settings = {
+      exec-once = [
+        "hyprpaper"
+      ];
+
       monitor=[
         "DP-1,3840x2160@59.99700,0x0,1"
         "DP-2,2560x1440@59.95100,3840x0,1"
