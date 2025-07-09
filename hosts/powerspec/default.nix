@@ -120,10 +120,9 @@
 
   programs.nano.enable = false;
   programs.steam.enable = true;
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
+
+  programs.hyprland.enable = true;
+  programs.hyprland.xwayland.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 

@@ -30,5 +30,12 @@ inputs @ { config, pkgs, vars, lib, ... }: {
 
   programs.kitty.font.size = lib.mkForce 10;
 
+
+  wayland.windowManager.hyprland = {
+    enable = true;
+    package = null;
+    xwayland.enable = true;
+  };
+
   programs.home-manager.enable = true;
 }
