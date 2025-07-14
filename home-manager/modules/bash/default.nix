@@ -8,10 +8,10 @@ config,
     enable = true;
     shellAliases = {
       cat = "bat";
-      ls = "lsd";
-      ll = "ls -l";
-      la = "ls -a";
-      lla = "ls -la";
+      ls = "lsd --group-directories-first";
+      ll = "lsd -l --group-directories-first";
+      la = "lsd -a --group-directories-first";
+      lla = "lsd -la --group-directories-first";
       g = "git";
     };
   };
