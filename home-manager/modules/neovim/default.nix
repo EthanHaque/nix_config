@@ -1,101 +1,101 @@
-{
-pkgs,
-config,
-...
-}:
+{ config, lib, pkgs, ... }:
 {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
+    withPython3 = true;
+    withNodeJs = true;
 
     extraPackages = with pkgs; [
+      gcc
       xclip
+      # Telescope
       ripgrep
-      fd
+
+
+      lua-language-server
+      stylua
       pyright
       eslint
       vtsls
-      lua-language-server
-      ccls
-      emmet-ls
-      eslint
     ];
 
     plugins = with pkgs.vimPlugins; [
-      {
-        plugin = nvim-autopairs;
-        type = "lua";
-        config = builtins.readFile ./nvim/plugins/autopairs.lua;
-      }
-      {
-        plugin = nvim-cmp;
-        type = "lua";
-        config = builtins.readFile ./nvim/plugins/cmp.lua;
-      }
-      cmp-nvim-lsp
-      cmp-buffer
-      cmp-path
-      cmp_luasnip
-      luasnip
-      friendly-snippets
-      plenary-nvim
-      {
-        plugin = cyberdream-nvim;
-        config = ''
-        colorscheme cyberdream
-        '';
-      }
-      {
-        plugin = comment-nvim;
-        type = "lua";
-        config = builtins.readFile ./nvim/plugins/comment.lua;
-      }
-      {
-        plugin = gitsigns-nvim;
-        type = "lua";
-        config = builtins.readFile ./nvim/plugins/gitsigns.lua;
-      }
-      {
-        plugin = lualine-nvim;
-        type = "lua";
-        config = builtins.readFile ./nvim/plugins/lualine.lua;
-      }
-      {
-        plugin = nvim-lspconfig;
-        config = builtins.readFile ./nvim/plugins/lsp.lua;
-        type = "lua";
-      }
-      {
-        plugin = telescope-nvim;
-        type = "lua";
-        config = builtins.readFile ./nvim/plugins/telescope.lua;
-      }
-      telescope-fzf-native-nvim
-      {
-        plugin = toggleterm-nvim;
-        type = "lua";
-        config = builtins.readFile ./nvim/plugins/toggleterm.lua;
-      }
-      {
-        plugin = nvim-treesitter;
-        type = "lua";
-        config = builtins.readFile ./nvim/plugins/treesitter.lua;
-      }
-      {
-        plugin = nvim-surround;
-        type = "lua";
-        config = builtins.readFile ./nvim/plugins/surround.lua;
-      }
-      nvim-treesitter.withAllGrammars
-      nvim-treesitter-textobjects
+      lazy-nvim
     ];
 
-    extraLuaConfig = ''
-      ${builtins.readFile ./nvim/config/keymaps.lua}
-      ${builtins.readFile ./nvim/config/options.lua}
-      ${builtins.readFile ./nvim/config/autocmds.lua}
-    '';
+    extraLuaConfig =
+      let
+        plugins = with pkgs.vimPlugins; [
+          nvim-cmp
+          cmp-nvim-lsp
+          cmp-buffer
+          cmp-path
+          cmp_luasnip
+          luasnip
+          friendly-snippets
+          plenary-nvim
+          nvim-lspconfig
+
+          nvim-autopairs
+
+          cyberdream-nvim
+
+          comment-nvim
+
+          gitsigns-nvim
+
+          lualine-nvim
+
+          telescope-nvim
+          telescope-fzf-native-nvim
+
+          toggleterm-nvim
+
+          nvim-treesitter
+          nvim-treesitter-context
+          nvim-treesitter-textobjects
+          nvim-treesitter.withAllGrammars
+
+          nvim-surround
+        ];
+        mkEntryFromDrv = drv:
+          if lib.isDerivation drv then
+            { name = "${lib.getName drv}"; path = drv; }
+          else
+            drv;
+        lazyPath = pkgs.linkFarm "lazy-plugins" (builtins.map mkEntryFromDrv plugins);
+      in
+      ''
+        require("lazy").setup({
+          defaults = {
+            lazy = true,
+          },
+          dev = {
+            -- reuse files from pkgs.vimPlugins.*
+            path = "${lazyPath}",
+            patterns = { "" },
+            -- fallback to download
+            fallback = true,
+          },
+          spec = {
+            -- force enable telescope-fzf-native.nvim
+            { "nvim-telescope/telescope-fzf-native.nvim", enabled = true },
+            -- import/override with your plugins
+            { import = "plugins" },
+            -- treesitter handled by xdg.configFile."nvim/parser", put this line at the end of spec to clear ensure_installed
+            { "nvim-treesitter/nvim-treesitter", opts = { ensure_installed = {} } },
+	    -- disable mason.nvim, use programs.neovim.extraPackages
+            { "williamboman/mason-lspconfig.nvim", enabled = false },
+            { "williamboman/mason.nvim", enabled = false },
+          },
+        })
+      '';
   };
+
+
+  # Normal LazyVim config here, see https://github.com/LazyVim/starter/tree/main/lua
+  xdg.configFile."nvim".source = ./nvim;
 }
