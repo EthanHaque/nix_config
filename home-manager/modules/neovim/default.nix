@@ -15,8 +15,9 @@ config,
       ripgrep
       fd
       pyright
+      eslint
+      vtsls
       lua-language-server
-      biome
       ccls
       emmet-ls
       eslint
@@ -70,11 +71,6 @@ config,
         plugin = telescope-nvim;
         type = "lua";
         config = builtins.readFile ./nvim/plugins/telescope.lua;
-      }
-      {
-        plugin = typescript-tools-nvim;
-        type = "lua";
-        config = builtins.readFile ./nvim/plugins/typescripttools.lua;
       }
       telescope-fzf-native-nvim
       {
