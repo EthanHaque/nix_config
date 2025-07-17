@@ -11,7 +11,6 @@ vim.cmd([[
 vim.opt.backspace = { "eol", "start", "indent" } -- allow backspacing over everything in insert mode
 vim.opt.clipboard = "unnamedplus"                -- allow neovim to access the system clipboard
 vim.opt.encoding = "utf-8"                       -- Internal encoding used by Vim
-vim.opt.fileencoding = "utf-8"                   -- Encoding used when saving files
 vim.opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
 vim.opt.syntax = "enable"
 
