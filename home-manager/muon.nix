@@ -10,6 +10,13 @@ inputs @ { config, pkgs, vars, ... }: {
     ./modules/gnome/dconf.nix
     ./modules/gtk
     ./modules/ranger
+    ./modules/hyprland
+    ./modules/hyprlock
+    ./modules/hyprpaper
+    ./modules/waybar
+    ./modules/swaync
+    ./modules/rofi
+    ./modules/sway
   ];
   home.username = vars.username;
   home.homeDirectory = "/home/${vars.username}";
