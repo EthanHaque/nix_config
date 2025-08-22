@@ -127,7 +127,7 @@ in
       # Keybindings
       bind = [
         # Application Launchers
-        "$mainMod, T, exec, ${terminal}"
+        "$mainMod, RETURN, exec, ${terminal}"
         "$mainMod, F, exec, ${browser}"
         "$mainMod, B, exec, ${fileManager}"
         "$mainMod, M, exec, ${menu}"
