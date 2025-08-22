@@ -16,6 +16,7 @@ inputs @ { config, pkgs, vars, lib, ... }: {
     ./modules/waybar
     ./modules/swaync
     ./modules/rofi
+    ./modules/i3
   ];
   home.username = vars.username;
   home.homeDirectory = "/home/${vars.username}";
