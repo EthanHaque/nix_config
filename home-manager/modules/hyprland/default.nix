@@ -135,7 +135,7 @@ in
         "$mainMod, W, killactive,"
         "$mainMod, V, togglefloating,"
         "$mainMod, P, pseudo,"
-        "$mainMod SHIFT, J, togglesplit,"
+        "$mainMod SHIFT, T, togglesplit,"
 
         # Move focus
         "$mainMod, H, movefocus, l"
