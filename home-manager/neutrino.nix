@@ -30,9 +30,6 @@ inputs @ { config, pkgs, vars, lib, ... }: {
     wl-clipboard
   ];
 
-  home.file."Pictures/buffalo_trail.jpg".source = ./modules/wallpapers/buffalo_trail.jpg;
-  home.file."Pictures/forest_rays.jpg".source = ./modules/wallpapers/forest_rays.jpg;
-
   programs.kitty.font.size = lib.mkForce 10;
 
   programs.home-manager.enable = true;
