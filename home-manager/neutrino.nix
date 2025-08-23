@@ -10,6 +10,7 @@ inputs @ { config, pkgs, vars, lib, ... }: {
     ./modules/rofi
     ./modules/starship
     ./modules/tmux
+    ./modules/sway/
   ];
   home.username = vars.username;
   home.homeDirectory = "/home/${vars.username}";
