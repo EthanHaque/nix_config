@@ -7,14 +7,7 @@ inputs @ { config, pkgs, vars, lib, ... }: {
     ./modules/starship
     ./modules/bash
     ./modules/git
-    ./modules/gnome/dconf.nix
-    ./modules/gtk
     ./modules/ranger
-    ./modules/hyprland
-    ./modules/hyprlock
-    ./modules/hyprpaper
-    ./modules/waybar
-    ./modules/swaync
     ./modules/rofi
     ./modules/i3
   ];
