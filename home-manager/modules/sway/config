@@ -1,7 +1,14 @@
 set $mod Mod4
 
 # Monitor setup
-exec --no-startup-id xrandr --output DP-4 --primary --mode 3840x2160 --rate 143.99 --pos 0x0 --output DP-2 --mode 3840x2160 --rate 60.00 --pos 3840x0
+output DP-4 {
+    mode 3840x2160@143.99Hz
+    position 0,0
+}
+output DP-2 {
+    mode 3840x2160@60Hz
+    position 3840,0
+}
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -40,6 +47,10 @@ bindsym $mod+Shift+v floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
+
+bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
 # Define names for default workspaces for which we configure key bindings later on.
 set $ws1 "1"
@@ -132,7 +143,7 @@ bindsym $mod+r mode "$mode_resize"
 set $mode_system System (e) logout, (r) reboot, (Ctrl+s) shutdown
 
 mode "$mode_system" {
-    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym e exec --no-startup-id swaymsg exit, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym Ctrl+s exec --no-startup-id systemctl poweroff -i, mode "default"
 
