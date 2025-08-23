@@ -2,15 +2,15 @@ inputs @ { config, pkgs, vars, lib, ... }: {
   imports = [
     ./modules/bash
     ./modules/browsers
-    ./modules/neovim
     ./modules/git
     ./modules/i3
     ./modules/kitty
+    ./modules/neovim
     ./modules/ranger
     ./modules/rofi
     ./modules/starship
-    ./modules/tmux
     ./modules/sway
+    ./modules/tmux
   ];
   home.username = vars.username;
   home.homeDirectory = "/home/${vars.username}";
