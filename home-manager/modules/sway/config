@@ -1,12 +1,12 @@
 set $mod Mod4
 
 # Monitor setup
-output DP-4 {
-    mode 3840x2160@143.99Hz
+output DP-6 {
+    mode 3840x2160@143.990Hz
     position 0,0
 }
-output DP-2 {
-    mode 3840x2160@60Hz
+output DP-5 {
+    mode 3840x2160@59.997Hz
     position 3840,0
 }
 
