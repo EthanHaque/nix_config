@@ -11,7 +11,6 @@ inputs @ { config, pkgs, vars, lib, ... }: {
     ./modules/starship
     ./modules/sway
     ./modules/tmux
-    ./modules/gnupg
   ];
   home.username = vars.username;
   home.homeDirectory = "/home/${vars.username}";
