@@ -50,6 +50,9 @@
     variant = "";
   };
 
+  programs.sway.enable=true;
+  programs.sway.extraOptions = [ "--unsupported-gpu" ];
+
 
   hardware.graphics.enable = true;
 
