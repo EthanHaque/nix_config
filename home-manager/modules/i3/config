@@ -1,5 +1,7 @@
 set $mod Mod4
 
+# Monitor setup
+exec --no-startup-id xrandr --output DP-4 --primary --mode 3840x2160 --rate 143.99 --pos 0x0 --output DP-2 --mode 3840x2160 --rate 60.00 --pos 3840x0
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
