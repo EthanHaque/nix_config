@@ -40,79 +40,7 @@
     layout = "us";
     variant = "";
   };
-
-  programs.sway.enable=true;
-  programs.sway.extraOptions = [ "--unsupported-gpu" ];
-
-
-  hardware.graphics.enable = true;
-
   services.xserver.videoDrivers = ["nvidia"];
-
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = false;
-    powerManagement.finegrained = false;
-
-    # Use the NVidia open source kernel module (not to be confused with the
-    # independent third-party "nouveau" open source driver).
-    # Support is limited to the Turing and later architectures. Full list of
-    # supported GPUs is at:
-    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
-    # Only available from driver 515.43.04+
-    # Currently alpha-quality/buggy, so false is currently the recommended setting.
-    open = true;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
-  };
-
-  services.printing.enable = true;
-
-  virtualisation.docker.enable = true;
-
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-
-  users.users.neutrino = {
-    isNormalUser = true;
-    description = "neutrino";
-    extraGroups = [ "networkmanager" "wheel" "docker" "input" ];
-    packages = with pkgs; [ ];
-  };
-
-  programs.nano.enable = false;
-  programs.steam.enable = true;
-
-  programs.hyprland.enable = true;
-  programs.hyprland.xwayland.enable = true;
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-hyprland
-      xdg-desktop-portal-gtk
-    ];
-  };
-
-  nixpkgs.config.allowUnfree = true;
-
-  environment.variables.EDITOR = "vim";
-  environment.systemPackages = with pkgs; [
-    vim
-    docker-compose
-  ];
-
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-  ];
-
-
 
   environment.gnome.excludePackages = with pkgs; [
     orca
@@ -141,6 +69,57 @@
     gnome-software
   ];
 
+  programs.sway.enable=true;
+  programs.sway.extraOptions = [ "--unsupported-gpu" ];
+
+
+  hardware.graphics.enable = true;
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = false;
+    powerManagement.finegrained = false;
+
+    # Use the NVidia open source kernel module (not to be confused with the
+    # independent third-party "nouveau" open source driver).
+    open = true;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
+  };
+
+  services.printing.enable = true;
+
+  virtualisation.docker.enable = true;
+
+  services.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
+
+  users.users.neutrino = {
+    isNormalUser = true;
+    description = "neutrino";
+    extraGroups = [ "networkmanager" "wheel" "docker" "input" ];
+    packages = with pkgs; [ ];
+  };
+
+  programs.nano.enable = false;
+  programs.steam.enable = true;
+
+  nixpkgs.config.allowUnfree = true;
+
+  environment.variables.EDITOR = "vim";
+  environment.systemPackages = with pkgs; [
+    vim
+    docker-compose
+  ];
+
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
