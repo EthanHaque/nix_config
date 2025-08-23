@@ -13,6 +13,8 @@ config,
       la = "lsd -a --group-directories-first";
       lla = "lsd -la --group-directories-first";
       g = "git";
+      ga = "git add";
+      gc = "git commit -a --verbose";
     };
   };
 }
