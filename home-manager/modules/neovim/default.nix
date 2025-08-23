@@ -96,6 +96,5 @@
   };
 
 
-  # Normal LazyVim config here, see https://github.com/LazyVim/starter/tree/main/lua
-  xdg.configFile."nvim".source = ./nvim;
+  xdg.configFile."nvim".source = ./lazy;
 }

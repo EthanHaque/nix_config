@@ -1,0 +1,3 @@
+[submodule "home-manager/modules/neovim/lazy"]
+	path = home-manager/modules/neovim/lazy
+	url = git@github.com:EthanHaque/nvim_lazy_config.git
