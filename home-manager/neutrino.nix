@@ -21,7 +21,6 @@ inputs @ { config, pkgs, vars, lib, ... }: {
     ruff
     btop
     devenv
-    gnomeExtensions.pop-shell
     bat
     lsd
     keepassxc
