@@ -52,6 +52,8 @@ bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+
 bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
+bindsym Print exec grim -g "$(slurp)" -t png - | tee "$(xdg-user-dir PICTURES)/$(date '+%Y-%m-%d-%H%M%S_screenshot.png')" | wl-copy -t image/png
+
 # Define names for default workspaces for which we configure key bindings later on.
 set $ws1 "1"
 set $ws2 "2"
