@@ -10,6 +10,8 @@ output DP-5 {
     position 3840,0
 }
 
+exec swaync
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 

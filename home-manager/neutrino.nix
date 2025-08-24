@@ -9,6 +9,7 @@ inputs @ { config, pkgs, vars, lib, ... }: {
     ./modules/rofi
     ./modules/starship
     ./modules/sway
+    ./modules/swaync
     ./modules/tmux
     ./modules/gtk
   ];
