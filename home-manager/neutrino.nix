@@ -10,6 +10,7 @@ inputs @ { config, pkgs, vars, lib, ... }: {
     ./modules/rofi
     ./modules/starship
     ./modules/sway
+    ./modules/swaylock
     ./modules/tmux
     ./modules/gtk
   ];
