@@ -11,7 +11,4 @@ config,
 
   gtk.iconTheme.name = "Papirus-Dark";
   gtk.iconTheme.package = pkgs.papirus-icon-theme;
-
-  gtk.cursorTheme.name = "Bibata-Modern-Ice";
-  gtk.cursorTheme.package = pkgs.bibata-cursors;
 }
