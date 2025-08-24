@@ -10,6 +10,8 @@ output DP-5 {
     position 3840,0
 }
 
+exec mako
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -53,6 +55,9 @@ bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
 bindsym Print exec grim -g "$(slurp)" -t png - | tee "$(xdg-user-dir PICTURES)/$(date '+%Y-%m-%d-%H%M%S_screenshot.png')" | wl-copy -t image/png
+
+bindsym $mod+n exec makoctl dismiss
+bindsym $mod+Shift+n exec makoctl dismiss --all
 
 # Define names for default workspaces for which we configure key bindings later on.
 set $ws1 "1"
