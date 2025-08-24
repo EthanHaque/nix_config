@@ -5,7 +5,6 @@ inputs @ { config, pkgs, vars, lib, ... }: {
     ./modules/git
     ./modules/kitty
     ./modules/neovim
-    ./modules/mako
     ./modules/ranger
     ./modules/rofi
     ./modules/starship
