@@ -3,7 +3,6 @@ inputs @ { config, pkgs, vars, lib, ... }: {
     ./modules/bash
     ./modules/browsers
     ./modules/git
-    ./modules/i3
     ./modules/kitty
     ./modules/neovim
     ./modules/ranger
