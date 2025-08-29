@@ -12,6 +12,7 @@
 
   networking.hostName = "tau"; # Define your hostname.
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.trusted-users = [ "neutrino" ];
 
 
   networking.networkmanager.enable = true;
