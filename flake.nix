@@ -15,9 +15,15 @@
     };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    nvim-lazy-config = {
+      url = "github:EthanHaque/nvim_lazy_config";
+      # TODO: add flake to lazy config repo
+      flake = false;
+    };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, nixos-hardware, ... }: {
+  outputs = inputs@{ nixpkgs, home-manager, nixos-hardware, nvim-lazy-config, ... }: {
     nixosConfigurations = {
       charm = nixpkgs.lib.nixosSystem rec {
         specialArgs = {

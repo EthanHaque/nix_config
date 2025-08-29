@@ -21,10 +21,5 @@
     ];
   };
 
-  xdg.configFile."nvim".source = pkgs.fetchFromGitHub {
-    owner = "EthanHaque";
-    repo = "nvim_lazy_config";
-    rev = "0f6d60c088e3a8e7952381b219a0541442dfc43f";
-    sha256 = "+357VBODem6f35wdDceSJjyflfGc10yLcAvl5ZFoCYg=";
-  };
+  xdg.configFile."nvim".source = inputs.nvim-lazy-config;
 }
