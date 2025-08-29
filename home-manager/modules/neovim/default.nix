@@ -21,7 +21,6 @@
     ];
   };
 
-  # This line now handles everything else.
   xdg.configFile."nvim".source = pkgs.fetchFromGitHub {
     owner = "EthanHaque";
     repo = "nvim_lazy_config";
