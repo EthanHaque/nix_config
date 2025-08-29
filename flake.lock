@@ -74,12 +74,29 @@
         "type": "github"
       }
     },
+    "nvim-lazy-config": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1756471282,
+        "narHash": "sha256-Rw4tgP2N4Llm6JzAhgNGZBF0F9K4ftGsj2FqDj8l9Ko=",
+        "owner": "EthanHaque",
+        "repo": "nvim_lazy_config",
+        "rev": "55df7ab65d15c34d833c43b5e738a08871c7f4be",
+        "type": "github"
+      },
+      "original": {
+        "owner": "EthanHaque",
+        "repo": "nvim_lazy_config",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "firefox-addons": "firefox-addons",
         "home-manager": "home-manager",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "nvim-lazy-config": "nvim-lazy-config"
       }
     }
   },
