@@ -25,7 +25,7 @@
   xdg.configFile."nvim".source = pkgs.fetchFromGitHub {
     owner = "EthanHaque";
     repo = "nvim_lazy_config";
-    rev = "ae191c1cbb4428c37c9cbe87503964461b42346e";
-    sha256 = "ywfJnh8NuoJmVcUBmSDkmoF8ayDUZPMNltL8QbzaY/M=";
+    rev = "0f6d60c088e3a8e7952381b219a0541442dfc43f";
+    sha256 = "+357VBODem6f35wdDceSJjyflfGc10yLcAvl5ZFoCYg=";
   };
 }
