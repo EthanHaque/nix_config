@@ -24,6 +24,7 @@ config,
       s = "status";
       lol = "log --graph --decorate --pretty=oneline --abbrev-commit";
       lola = "log --graph --decorate --pretty=oneline --abbrev-commit --all";
+      lolp = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(r) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative";
       pl = "pull";
       ps = "push";
     };
