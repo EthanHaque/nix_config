@@ -1,4 +1,6 @@
-
-* {
-    font:"JetbrainsMono Nerd Font 11";
+configuration {
+    display-drun: "Apps";
+    display-run: "Cmd";
+    display-window: "Win";
+    font:"JetbrainsMono Nerd Font 12";
 }
