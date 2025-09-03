@@ -134,11 +134,18 @@
   environment.systemPackages = with pkgs; [
     vim
     docker-compose
+    pinentry-curses
   ];
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
   ];
+
+  services.pcscd.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   environment.gnome.excludePackages = with pkgs; [
     orca
