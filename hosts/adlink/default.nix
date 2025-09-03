@@ -15,7 +15,9 @@
 
 
   networking.hostName = "gluon";
-  networking.networkmanager.enable = true;
+  networking.networkmanager.enable = false;
+  networking.useDHCP = false;
+  networking.interfaces."enP2s1f0np0".useDHCP = true;
 
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
