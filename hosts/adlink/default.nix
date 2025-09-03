@@ -56,7 +56,10 @@
 
   services.printing.enable = true;
 
-  virtualisation.docker.enable = true;
+  virtualisation.docker= {
+    enable = true;
+    enableNvidia = true;
+  }
 
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
