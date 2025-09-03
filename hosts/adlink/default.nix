@@ -78,6 +78,8 @@
     packages = with pkgs; [ ];
   };
 
+  services.openssh.enable = true;
+
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
     trusted-users = [ "muon" ];
