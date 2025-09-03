@@ -21,9 +21,11 @@
       # TODO: add flake to lazy config repo
       flake = false;
     };
-  };
 
-  outputs = inputs@{ nixpkgs, home-manager, nixos-hardware, nvim-lazy-config, ... }: {
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+   };
+
+  outputs = inputs@{ nixpkgs, home-manager, nixos-hardware, nvim-lazy-config, nix-minecraft, ... }: {
     nixosConfigurations = {
       charm = nixpkgs.lib.nixosSystem rec {
         specialArgs = {
