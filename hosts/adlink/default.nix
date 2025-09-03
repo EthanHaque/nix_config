@@ -66,7 +66,10 @@
     extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
 
-  services.openssh.enable = true;
+  services.openssh  = {
+    enable = true;
+    passwordAuthentication = false;
+  }
 
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
