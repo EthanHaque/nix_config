@@ -31,15 +31,6 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  services.xserver.enable = true;
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
-  services.xserver.excludePackages = [ pkgs.xterm ];
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-
 
   hardware.graphics.enable = true;
   services.xserver.videoDrivers = ["nvidia"];
@@ -54,28 +45,15 @@
   };
 
 
-  services.printing.enable = true;
-
   virtualisation.docker= {
     enable = true;
   };
   hardware.nvidia-container-toolkit.enable = true;
 
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  security.polkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
   users.users.muon = {
     isNormalUser = true;
     description = "muon";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
-    packages = with pkgs; [ ];
   };
 
   services.openssh.enable = true;
@@ -93,12 +71,6 @@
     stalled-download-timeout = 500;
   };
 
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-    ];
-  };
 
   nixpkgs.config = {
     allowUnfree = true;
@@ -123,33 +95,5 @@
     enableSSHSupport = true;
   };
 
-  environment.gnome.excludePackages = with pkgs; [
-    orca
-    evince
-    geary
-    gnome-backgrounds
-    gnome-tour
-    gnome-user-docs
-    baobab
-    epiphany
-    gnome-text-editor
-    gnome-calculator
-    gnome-calendar
-    gnome-console
-    gnome-contacts
-    gnome-font-viewer
-    gnome-logs
-    gnome-maps
-    gnome-music
-    gnome-system-monitor
-    gnome-weather
-    gnome-connections
-    simple-scan
-    snapshot
-    yelp
-    gnome-software
-  ];
-
   system.stateVersion = "24.11";
-
 }

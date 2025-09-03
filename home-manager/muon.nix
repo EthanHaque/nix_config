@@ -1,14 +1,10 @@
 inputs @ { config, pkgs, vars, ... }: {
   imports = [
-    ./modules/browsers
     ./modules/neovim
-    ./modules/kitty
     ./modules/tmux
     ./modules/starship
     ./modules/bash
     ./modules/git
-    ./modules/gnome/dconf.nix
-    ./modules/gtk
     ./modules/ranger
   ];
   home.username = vars.username;
@@ -20,14 +16,11 @@ inputs @ { config, pkgs, vars, ... }: {
     ruff
     btop
     devenv
-    gnomeExtensions.pop-shell
     bat
     lsd
     keepassxc
   ];
 
-
-  home.file."Pictures/buffalo_trail.jpg".source = ./modules/wallpapers/buffalo_trail.jpg;
 
   programs.home-manager.enable = true;
 }
