@@ -19,6 +19,14 @@
   networking.useDHCP = false;
   networking.interfaces."enP2s1f0np0".useDHCP = true;
 
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [
+      22
+      80
+    ];
+  };
+
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
