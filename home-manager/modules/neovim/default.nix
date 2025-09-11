@@ -14,7 +14,7 @@
       ripgrep
       lua-language-server
       stylua
-      ty
+      pyrefly
       eslint
       ruff
       vtsls
