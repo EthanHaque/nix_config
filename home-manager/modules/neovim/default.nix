@@ -15,6 +15,7 @@
       lua-language-server
       stylua
       pyrefly
+      ty
       eslint
       ruff
       vtsls
