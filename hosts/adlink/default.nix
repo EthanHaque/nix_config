@@ -161,7 +161,6 @@
       80
     ];
   };
-
   services.duckdns = {
     enable = true;
     domains = [ "pion-01" ];
