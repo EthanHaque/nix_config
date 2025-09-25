@@ -58,16 +58,5 @@ config,
 
       enabled_layouts = "Tall, *";
     };
-    keybindings = {
-        "ctrl+t" = "new_tab_with_cwd";
-        "ctrl+f2" = "set_tab_title";
-
-        "ctrl+enter" = "new_window";
-        "ctrl+w" = "close_window";
-        "ctrl+h" = "neighboring_window left";
-        "ctrl+j" = "neighboring_window bottom";
-        "ctrl+k" = "neighboring_window top";
-        "ctrl+l" = "neighboring_window right";
-    };
   };
 }
