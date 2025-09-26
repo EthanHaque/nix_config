@@ -17,6 +17,8 @@ inputs @ { config, pkgs, vars, lib, ... }: {
   home.username = vars.username;
   home.homeDirectory = "/home/${vars.username}";
 
+  home.file.".inputrc".source = ./files/.inputrc;
+
   home.stateVersion = "25.05";
 
   home.packages = with pkgs; [

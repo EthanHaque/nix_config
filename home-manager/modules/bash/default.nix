@@ -16,8 +16,5 @@ config,
       ga = "git add";
       gc = "git commit -a --verbose";
     };
-    initExtra = ''
-      set -o vi
-    '';
   };
 }
