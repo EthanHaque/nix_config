@@ -17,6 +17,7 @@ config,
       c = "commit --verbose";
       ca = "commit --verbose --amend";
       cam = "commit --verbose --amend --no-edit";
+      cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|main\\|develop\\|staging' | xargs -n 1 -r git branch -d";
       cm = "commit -m";
       co = "checkout";
       cob = "checkout -b";
