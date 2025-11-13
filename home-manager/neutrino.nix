@@ -13,6 +13,7 @@ inputs @ { config, pkgs, vars, lib, ... }: {
     ./modules/swaylock
     ./modules/tmux
     ./modules/gtk
+    ./modules/gnucash
   ];
   home.username = vars.username;
   home.homeDirectory = "/home/${vars.username}";
