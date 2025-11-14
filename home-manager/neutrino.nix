@@ -3,6 +3,7 @@ inputs @ { config, pkgs, vars, lib, ... }: {
     ./modules/bash
     ./modules/browsers
     ./modules/git
+    ./modules/ghostty/
     ./modules/kitty
     ./modules/neovim
     ./modules/mako
