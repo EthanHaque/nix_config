@@ -15,8 +15,6 @@
       lua-language-server
       stylua
       pyright
-      pyrefly
-      ty
       eslint
       ruff
       vtsls
