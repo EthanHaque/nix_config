@@ -3,13 +3,13 @@ set $mod Mod4
 # Monitor setup
 output DP-5 {
     mode 3840x2160@143.990Hz
-    position 0,0
-}
-output DP-4 {
-    mode 3840x2160@59.997Hz
-    position 3840,0
+    pos 0 0
 }
 
+output DP-6 {
+    mode 3840x2160@59.997Hz
+    pos 3840 0
+}
 exec mako
 
 # Use Mouse+$mod to drag floating windows to their wanted position
