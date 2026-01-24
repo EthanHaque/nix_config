@@ -7,7 +7,7 @@ config,
     enable = true;
     userName = "Ethan Haque";
     userEmail = "ethan.k.haque@gmail.com";
-    signing.key="7EB3CBB68FC1AE2E";
+    signing.key="41DEA5FD54E42FE99A4EA29858B99D9F7D818050";
     signing.signByDefault=true;
     extraConfig.init.defaultBranch = "main";
     extraConfig.pull.rebase = true;

@@ -10,7 +10,7 @@ inputs @ { config, pkgs, vars, ... }: {
   home.username = vars.username;
   home.homeDirectory = "/home/${vars.username}";
 
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.11";
 
   home.packages = with pkgs; [
     ruff
@@ -18,7 +18,6 @@ inputs @ { config, pkgs, vars, ... }: {
     devenv
     bat
     lsd
-    keepassxc
   ];
 
 

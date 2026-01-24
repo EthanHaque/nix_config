@@ -21,11 +21,9 @@
       # TODO: add flake to lazy config repo
       flake = false;
     };
-
-    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
    };
 
-  outputs = inputs@{ nixpkgs, home-manager, nixos-hardware, nvim-lazy-config, nix-minecraft, ... }: {
+  outputs = inputs@{ nixpkgs, home-manager, nixos-hardware, nvim-lazy-config, ... }: {
     nixosConfigurations = {
       charm = nixpkgs.lib.nixosSystem rec {
         specialArgs = {
@@ -48,11 +46,11 @@
           nixos-hardware.nixosModules.dell-precision-5530
         ];
       };
-      gluon = nixpkgs.lib.nixosSystem rec {
+      zone = nixpkgs.lib.nixosSystem rec {
         specialArgs = {
           inherit inputs;
           vars = {
-            username = "muon";
+            username = "tape";
           };
         };
         system = "aarch64-linux";
@@ -62,7 +60,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.muon = import ./home-manager/muon.nix;
+            home-manager.users.tape = import ./home-manager/tape.nix;
             home-manager.extraSpecialArgs = specialArgs;
             home-manager.backupFileExtension = "backup";
           }
