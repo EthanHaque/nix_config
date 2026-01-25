@@ -69,13 +69,18 @@
   };
   hardware.nvidia-container-toolkit.enable = true;
 
+  users.mutableUsers = false;
+  users.users.root.hashedPassword = ";";
   users.users.tape = {
+      hashedPassword = ";";
       isNormalUser = true;
       extraGroups = [ "networkmanager" "wheel" "docker" ];
       openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKBdFy0tjrBNCw5R7egxbw9tNKWy7eaObMljZd4YNCkE cardno:35_274_370"
       ];
   };
+
+  security.sudo.wheelNeedsPassword = false;
 
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
