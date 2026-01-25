@@ -17,7 +17,7 @@
 
 
   networking.hostName = "zone";
-  networking.networkmanager.enable = true;
+  networking.networkmanager.enable = false;
   networking.useDHCP = true;
 
   networking.firewall = {
