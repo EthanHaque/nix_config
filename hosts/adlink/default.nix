@@ -15,6 +15,16 @@
   boot.loader.grub.efiInstallAsRemovable = true;
   boot.loader.grub.device = "nodev";
 
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      PermitRootLogin = "no";
+      AllowStreamLocalForwarding = "yes";
+    };
+  };
+
 
   networking.hostName = "zone";
   networking.networkmanager.enable = false;
@@ -59,8 +69,11 @@
   hardware.nvidia-container-toolkit.enable = true;
 
   users.users.tape = {
-    isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+      isNormalUser = true;
+      extraGroups = [ "networkmanager" "wheel" "docker" ];
+      openssh.authorizedKeys.keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKBdFy0tjrBNCw5R7egxbw9tNKWy7eaObMljZd4YNCkE cardno:35_274_370"
+      ];
   };
 
   nix.settings = {
@@ -102,3 +115,4 @@
 
   system.stateVersion = "25.11";
 }
+❯
