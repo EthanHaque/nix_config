@@ -22,6 +22,7 @@
       KbdInteractiveAuthentication = false;
       PermitRootLogin = "no";
       AllowStreamLocalForwarding = "yes";
+      StreamLocalBindUnlink = "yes";
     };
   };
 
@@ -115,4 +116,3 @@
 
   system.stateVersion = "25.11";
 }
-❯
