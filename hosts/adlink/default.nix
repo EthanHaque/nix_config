@@ -2,7 +2,7 @@
 {
   imports =
     [
-      ./hardware-configuration.nix
+    ./hardware-configuration.nix
     ];
 
   nixpkgs.overlays = [];
@@ -72,12 +72,12 @@
   users.mutableUsers = false;
   users.users.root.hashedPassword = ";";
   users.users.tape = {
-      hashedPassword = ";";
-      isNormalUser = true;
-      extraGroups = [ "networkmanager" "wheel" "docker" ];
-      openssh.authorizedKeys.keys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKBdFy0tjrBNCw5R7egxbw9tNKWy7eaObMljZd4YNCkE cardno:35_274_370"
-      ];
+    hashedPassword = ";";
+    isNormalUser = true;
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKBdFy0tjrBNCw5R7egxbw9tNKWy7eaObMljZd4YNCkE cardno:35_274_370"
+    ];
   };
 
   security.sudo.wheelNeedsPassword = false;
@@ -87,7 +87,7 @@
     trusted-users = [ "tape" ];
     substituters = [
       "https://cache.nixos.org/"
-      "https://nix-community.cachix.org"
+        "https://nix-community.cachix.org"
     ];
     trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
@@ -105,8 +105,8 @@
   environment.variables.EDITOR = "vim";
   environment.systemPackages = with pkgs; [
     vim
-    docker-compose
-    pinentry-curses
+      docker-compose
+      pinentry-curses
   ];
 
   fonts.packages = with pkgs; [
