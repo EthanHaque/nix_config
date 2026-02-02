@@ -29,7 +29,18 @@
 
   networking.hostName = "zone";
   networking.networkmanager.enable = false;
-  networking.useDHCP = true;
+
+  networking.useDHCP = false;
+
+  # Explicitly enable DHCP on every specific port
+  networking.interfaces = {
+    enP4p4s0.useDHCP = true;
+
+    enP2s1f0np0.useDHCP = true;
+    enP2s1f1np1.useDHCP = true;
+    enP2s1f2np2.useDHCP = true;
+    enP2s1f3np3.useDHCP = true;
+  };
 
   networking.firewall = {
     enable = true;
