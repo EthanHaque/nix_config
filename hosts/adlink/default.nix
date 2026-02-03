@@ -30,17 +30,16 @@
   networking.hostName = "zone";
   networking.networkmanager.enable = false;
 
-  networking.useDHCP = false;
-
-  # Explicitly enable DHCP on every specific port
-  networking.interfaces = {
-    enP4p4s0.useDHCP = true;
-
-    enP2s1f0np0.useDHCP = true;
-    enP2s1f1np1.useDHCP = true;
-    enP2s1f2np2.useDHCP = true;
-    enP2s1f3np3.useDHCP = true;
+  systemd.network.links."10-broadcom-sfp" = {
+    matchConfig.Name = "enP2s1f3np3";
+    linkConfig = {
+      AutoNegotiation = "no";
+      Duplex = "full";
+      BitsPerSecond = "10G";
+    };
   };
+
+  networking.useDHCP = true;
 
   networking.firewall = {
     enable = true;
