@@ -75,7 +75,7 @@ networking = {
   hardware.nvidia-container-toolkit.enable = true;
 
   users.mutableUsers = true;
-  users.users.root.hashedPassword = ";";
+  users.users.root.hashedPassword = "!";
   users.users.tape = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" "docker" ];
