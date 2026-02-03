@@ -27,19 +27,20 @@
   };
 
 
-  networking.hostName = "zone";
-  networking.networkmanager.enable = false;
+networking = {
+    hostName = "zone";
+    networkmanager.enable = false;
+    useDHCP = true;
+    localCommands = ''
+      ${pkgs.ethtool}/bin/ethtool -s enP2s1f3np3 speed 10000 duplex full autoneg off
+    '';
 
-  systemd.network.links."10-broadcom-sfp" = {
-    matchConfig.Name = "enP2s1f3np3";
-    linkConfig = {
-      AutoNegotiation = "no";
-      Duplex = "full";
-      BitsPerSecond = "10G";
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [];
     };
   };
 
-  networking.useDHCP = true;
 
   networking.firewall = {
     enable = true;
@@ -115,8 +116,9 @@
   environment.variables.EDITOR = "vim";
   environment.systemPackages = with pkgs; [
     vim
-      docker-compose
-      pinentry-curses
+    docker-compose
+    pinentry-curses
+    ethtool
   ];
 
   fonts.packages = with pkgs; [
