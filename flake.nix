@@ -25,7 +25,6 @@
 
   outputs = inputs@{ nixpkgs, home-manager, nixos-hardware, ... }:
     let
-# Helper function to create a host
     mkHost = { hostname, system, username, extraModules ? [] }: nixpkgs.lib.nixosSystem {
       inherit system;
       specialArgs = {
