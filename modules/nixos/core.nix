@@ -40,10 +40,6 @@
     pinentry-curses
   ];
 
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-  ];
-
   services.pcscd.enable = true;
 
   programs.gnupg.agent = {
