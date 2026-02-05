@@ -3,7 +3,7 @@
   imports =
     [
     ./hardware-configuration.nix
-    ../../moules/nixos/core.nix
+    ../../modules/nixos/core.nix
     ];
 
   nixpkgs.overlays = [];
