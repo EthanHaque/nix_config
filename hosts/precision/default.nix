@@ -8,6 +8,8 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  hardware.graphics.enable = true;
+  hardware.nvidia.modesetting.enable = true;
 
   networking.hostName = "charm"; # Define your hostname.
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
