@@ -39,7 +39,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.strange = import ./home-manager/strange.nix;
+            home-manager.users.strange = import ./modules/home-manager/strange.nix;
             home-manager.extraSpecialArgs = specialArgs;
             home-manager.backupFileExtension = "backup";
           }
@@ -60,7 +60,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.tape = import ./home-manager/tape.nix;
+            home-manager.users.tape = import ./modules/home-manager/tape.nix;
             home-manager.extraSpecialArgs = specialArgs;
             home-manager.backupFileExtension = "backup";
           }
@@ -80,7 +80,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.neutrino = import ./home-manager/neutrino.nix;
+            home-manager.users.neutrino = import ./modules/home-manager/neutrino.nix;
             home-manager.extraSpecialArgs = specialArgs;
             home-manager.backupFileExtension = "backup";
           }
