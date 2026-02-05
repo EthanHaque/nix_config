@@ -47,9 +47,8 @@
     nixosConfigurations = {
       charm = mkHost {
         hostname = "precision"; # Folder name in ./hosts/
-          system = "x86_64-linux";
+        system = "x86_64-linux";
         username = "strange";
-        extraModules = [ nixos-hardware.nixosModules.dell-precision-5530 ]; # TODO: Remove this and put it in default.nix
       };
       zone = mkHost {
         hostname = "adlink";

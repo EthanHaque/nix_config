@@ -1,7 +1,8 @@
-{ config, pkgs, inputs, ... }: {
+{ config, pkgs, inputs, vars, ... }: {
   imports =
     [
       ./hardware-configuration.nix
+      inputs.nixos-hardware.nixosModules.dell-precision-5530 # Moved from flake.nix
     ];
 
   # Bootloader.

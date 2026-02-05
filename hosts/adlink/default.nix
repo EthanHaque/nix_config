@@ -57,7 +57,7 @@ networking = {
 
   users.mutableUsers = true;
   users.users.root.hashedPassword = "!";
-  users.users.tape = {
+  users.users.${vars.username} = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     openssh.authorizedKeys.keys = [
@@ -68,7 +68,7 @@ networking = {
   security.sudo.wheelNeedsPassword = false;
 
   nix.settings = {
-    trusted-users = [ "tape" ];
+    trusted-users = [ vars.username ];
     substituters = [
       "https://cache.nixos.org/"
         "https://nix-community.cachix.org"
