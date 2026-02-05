@@ -4,6 +4,7 @@
       ./hardware-configuration.nix
       ../../modules/nixos/core.nix
       ../../modules/nixos/workstation.nix
+      ../../modules/nixos/gnome.nix
       inputs.nixos-hardware.nixosModules.dell-precision-5530
     ];
 
@@ -14,14 +15,6 @@
   networking.hostName = "charm";
   networking.networkmanager.enable = true;
 
-  services.xserver.enable = true;
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
-  services.xserver.excludePackages = [ pkgs.xterm ];
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
   hardware.graphics.enable = true;
   hardware.nvidia.modesetting.enable = true;
 
@@ -45,33 +38,6 @@
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
   };
-
-  environment.gnome.excludePackages = with pkgs; [
-    orca
-    evince
-    geary
-    gnome-backgrounds
-    gnome-tour
-    gnome-user-docs
-    baobab
-    epiphany
-    gnome-text-editor
-    gnome-calculator
-    gnome-calendar
-    gnome-console
-    gnome-contacts
-    gnome-font-viewer
-    gnome-logs
-    gnome-maps
-    gnome-music
-    gnome-system-monitor
-    gnome-weather
-    gnome-connections
-    simple-scan
-    snapshot
-    yelp
-    gnome-software
-  ];
 
   system.stateVersion = "24.11";
 }
