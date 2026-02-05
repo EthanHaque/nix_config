@@ -40,9 +40,8 @@ networking = {
     };
   };
 
-  hardware.graphics.enable = true;
   services.xserver.videoDrivers = ["nvidia"];
-
+  hardware.graphics.enable = true;
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = false;
@@ -53,9 +52,7 @@ networking = {
   };
 
 
-  virtualisation.docker= {
-    enable = true;
-  };
+  virtualisation.docker.enable = true;
   hardware.nvidia-container-toolkit.enable = true;
 
   users.mutableUsers = true;
