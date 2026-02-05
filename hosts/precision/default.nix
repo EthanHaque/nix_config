@@ -8,7 +8,6 @@
       inputs.nixos-hardware.nixosModules.dell-precision-5530
     ];
 
-  # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
