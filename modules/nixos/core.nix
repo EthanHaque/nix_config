@@ -36,7 +36,6 @@
     vim
     git
     curl
-    docker-compose
     pinentry-curses
   ];
 
