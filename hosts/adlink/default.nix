@@ -3,6 +3,7 @@
   imports =
     [
     ./hardware-configuration.nix
+    ../../moules/nixos/core.nix
     ];
 
   nixpkgs.overlays = [];
@@ -21,8 +22,6 @@
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
       PermitRootLogin = "no";
-      AllowStreamLocalForwarding = "yes";
-      StreamLocalBindUnlink = "yes";
     };
   };
 
@@ -40,21 +39,6 @@ networking = {
       allowedTCPPorts = [];
     };
   };
-
-  time.timeZone = "America/New_York";
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
-
 
   hardware.graphics.enable = true;
   services.xserver.videoDrivers = ["nvidia"];
@@ -87,7 +71,6 @@ networking = {
   security.sudo.wheelNeedsPassword = false;
 
   nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
     trusted-users = [ "tape" ];
     substituters = [
       "https://cache.nixos.org/"
@@ -96,32 +79,6 @@ networking = {
     trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
-    stalled-download-timeout = 500;
-  };
-
-
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
-
-  programs.nano.enable = false;
-
-  environment.variables.EDITOR = "vim";
-  environment.systemPackages = with pkgs; [
-    vim
-    docker-compose
-    pinentry-curses
-    ethtool
-  ];
-
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-  ];
-
-  services.pcscd.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
   };
 
   system.stateVersion = "25.11";
