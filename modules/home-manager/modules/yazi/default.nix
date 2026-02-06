@@ -11,5 +11,6 @@ config,
   home.packages = with pkgs; [
     poppler # pdf preview
     ffmpeg  # video thumbnails
+    imagemagick
   ];
 }
