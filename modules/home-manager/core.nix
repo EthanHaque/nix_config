@@ -6,7 +6,7 @@
     ./modules/neovim
     ./modules/tmux
     ./modules/starship
-    ./modules/ranger
+    ./modules/yazi
   ];
 
   home.packages = with pkgs; [
