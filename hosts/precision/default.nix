@@ -21,6 +21,9 @@
 
   virtualisation.docker.enable = true;
 
+  programs.sway.enable = true;
+  programs.sway.extraOptions = [ "--unsupported-gpu" ];
+
   users.users.${vars.username} = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" "docker" ];
@@ -37,6 +40,7 @@
       imports = [
         ../../modules/home-manager/gui.nix
         ../../modules/home-manager/wms/gnome.nix
+        ../../modules/home-manager/wms/sway.nix
       ];
       home.username = vars.username;
       home.homeDirectory = "/home/${vars.username}";
