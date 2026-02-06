@@ -1,23 +1,29 @@
 set $mod Mod4
 
 # Monitor setup
-output DP-5 {
-    mode 3840x2160@143.990Hz
+
+output DP-3 {
+    mode 2560x1440@239.970Hz
     pos 0 0
 }
 
-output DP-6 {
-    mode 3840x2160@59.997Hz
-    pos 3840 -1600
-    transform 90
+output DP-2 {
+    mode 3840x2160@143.990Hz
+    pos 2560 0
 }
+
+output DP-1 {
+    mode 3840x2160@59.997Hz
+    pos 6400 0
+}
+
 exec mako
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 bindsym $mod+m exec rofi -show drun
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec ghostty
 
 bindsym $mod+d split h
 bindsym $mod+Shift+d split v

@@ -18,47 +18,76 @@
 
     nvim-lazy-config = {
       url = "github:EthanHaque/nvim_lazy_config";
-      # TODO: add flake to lazy config repo
       flake = false;
     };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, nixos-hardware, ... }:
-    let
-    mkHost = { hostname, system, username, extraModules ? [] }: nixpkgs.lib.nixosSystem {
-      inherit system;
-      specialArgs = {
-        inherit inputs;
-        vars = { inherit username; };
-      };
-      modules = [
-        ./hosts/${hostname}
-      home-manager.nixosModules.home-manager
-      {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.users.${username} = import ./modules/home-manager/${username}.nix;
-        home-manager.extraSpecialArgs = { inherit inputs; vars = { inherit username; }; };
-        home-manager.backupFileExtension = "backup";
-      }
-      ] ++ extraModules;
-    };
-  in {
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+
+
     nixosConfigurations = {
-      charm = mkHost {
-        hostname = "precision"; # Folder name in ./hosts/
-        system = "x86_64-linux";
-        username = "strange";
-      };
-      zone = mkHost {
-        hostname = "adlink";
+      zone = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
-        username = "tape";
+        modules = [ ./hosts/adlink/default.nix ];
+        specialArgs = { inherit inputs; vars = { username = "tape"; }; };
       };
-      tau = mkHost {
-        hostname = "powerspec";
+
+
+      tau = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        username = "neutrino";
+        modules = [ ./hosts/powerspec/default.nix ];
+        specialArgs = { inherit inputs; vars = { username = "neutrino"; }; };
+      };
+
+
+      charm = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [ ./hosts/precision/default.nix ];
+        specialArgs = { inherit inputs; vars = { username = "strange"; }; };
+      };
+    };
+
+
+    homeConfigurations = {
+      "tape@zone" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.aarch64-linux;
+        modules = [
+            ./modules/home-manager/core.nix
+          {
+            home.username = "tape";
+            home.homeDirectory = "/home/tape";
+          }
+        ];
+        extraSpecialArgs = { inherit inputs; };
+      };
+
+
+      "neutrino@tau" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        modules = [
+            ./modules/home-manager/gui.nix
+            ./modules/home-manager/wms/sway.nix
+            ./modules/home-manager/wms/gnome.nix
+            {
+              home.username = "neutrino";
+              home.homeDirectory = "/home/neutrino";
+            }
+        ];
+        extraSpecialArgs = { inherit inputs; };
+      };
+
+
+      "strange@charm" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        modules = [
+            ./modules/home-manager/gui.nix
+            ./modules/home-manager/wms/gnome.nix
+            {
+              home.username = "strange";
+              home.homeDirectory = "/home/strange";
+            }
+        ];
+        extraSpecialArgs = { inherit inputs; };
       };
     };
   };
