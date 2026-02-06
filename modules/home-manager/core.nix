@@ -2,6 +2,7 @@
   imports = [
     ./modules/bash
     ./modules/git
+    ./modules/gpg
     ./modules/neovim
     ./modules/tmux
     ./modules/starship
