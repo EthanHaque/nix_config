@@ -33,6 +33,12 @@
 
   programs.steam.enable = true;
 
+  environment.sessionVariables = {
+    WLR_NO_HARDWARE_CURSORS = "1";
+    NIXOS_OZONE_WL = "1";
+    LIBGL_ALWAYS_SOFTWARE = "0";
+  };
+
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     useGlobalPkgs = true;
@@ -40,16 +46,28 @@
     users.${vars.username} = {
       imports = [
         ../../modules/home-manager/gui.nix
-        ../../modules/home-manager/wms/gnome.nix
         ../../modules/home-manager/wms/sway.nix
       ];
 
-      wayland.windowManager.sway.config.output = {
-        "eDP-1" = {
-          mode = "1920x1080@60Hz";
-          pos = "0 0";
-          scale = "1.0";
+      wayland.windowManager.sway.config = {
+
+        output = {
+          "eDP-1" = {
+            mode = "1920x1080@60Hz";
+            pos = "0 0";
+            scale = "1.0";
+          };
         };
+
+        input = {
+          "type:touchpad" = {
+            dwt = "enabled";
+            tap = "enabled";
+            natural_scroll = "enabled";
+            middle_emulation = "enabled";
+          };
+        };
+
       };
 
       home.username = vars.username;
