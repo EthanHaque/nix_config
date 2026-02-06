@@ -66,6 +66,9 @@
             natural_scroll = "enabled";
             middle_emulation = "enabled";
           };
+          "type:keyboard" = {
+            xkb_options = "caps:swapescape";
+          };
         };
 
       };
