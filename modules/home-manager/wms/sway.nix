@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }: {
+{ pkgs, ... }: {
   imports = [
     ../modules/sway
     ../modules/swaylock
@@ -8,8 +8,7 @@
 
   wayland.windowManager.sway = {
     enable = true;
-
-    extraConfig = builtins.readFile ./config;
+    extraConfig = builtins.readFile ../modules/sway/config;
   };
 
   home.packages = with pkgs; [
