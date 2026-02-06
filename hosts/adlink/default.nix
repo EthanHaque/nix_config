@@ -1,9 +1,10 @@
-{ config, pkgs, lib, vars, ... }:
+{ config, pkgs, lib, vars, inputs, ... }:
 {
   imports =
     [
-    ./hardware-configuration.nix
-    ../../modules/nixos/core.nix
+      ./hardware-configuration.nix
+      ../../modules/nixos/core.nix
+      inputs.home-manager.nixosModules.home-manager
     ];
 
   boot.loader.systemd-boot.enable = false;
@@ -23,15 +24,13 @@
     };
   };
 
-
-networking = {
+  networking = {
     hostName = "zone";
     networkmanager.enable = false;
     useDHCP = true;
     localCommands = ''
       ${pkgs.ethtool}/bin/ethtool -s enP2s1f3np3 speed 10000 duplex full autoneg off
     '';
-
     firewall = {
       enable = true;
       allowedTCPPorts = [];
@@ -49,7 +48,6 @@ networking = {
     package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
 
-
   virtualisation.docker.enable = true;
   hardware.nvidia-container-toolkit.enable = true;
 
@@ -64,16 +62,27 @@ networking = {
   };
 
   security.sudo.wheelNeedsPassword = false;
-
   nix.settings = {
     trusted-users = [ vars.username ];
     substituters = [
       "https://cache.nixos.org/"
-        "https://nix-community.cachix.org"
+      "https://nix-community.cachix.org"
     ];
     trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
+  };
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.${vars.username} = {
+      imports = [ ../../modules/home-manager/core.nix ];
+      home.username = vars.username;
+      home.homeDirectory = "/home/${vars.username}";
+      home.stateVersion = "24.11";
+    };
   };
 
   system.stateVersion = "25.11";

@@ -23,8 +23,6 @@
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-
-
     nixosConfigurations = {
       zone = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
@@ -32,62 +30,16 @@
         specialArgs = { inherit inputs; vars = { username = "tape"; }; };
       };
 
-
       tau = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [ ./hosts/powerspec/default.nix ];
         specialArgs = { inherit inputs; vars = { username = "neutrino"; }; };
       };
 
-
       charm = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [ ./hosts/precision/default.nix ];
         specialArgs = { inherit inputs; vars = { username = "strange"; }; };
-      };
-    };
-
-
-    homeConfigurations = {
-      "tape@zone" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.aarch64-linux;
-        modules = [
-            ./modules/home-manager/core.nix
-          {
-            home.username = "tape";
-            home.homeDirectory = "/home/tape";
-          }
-        ];
-        extraSpecialArgs = { inherit inputs; };
-      };
-
-
-      "neutrino@tau" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        modules = [
-            ./modules/home-manager/gui.nix
-            ./modules/home-manager/wms/sway.nix
-            ./modules/home-manager/wms/gnome.nix
-            {
-              home.username = "neutrino";
-              home.homeDirectory = "/home/neutrino";
-            }
-        ];
-        extraSpecialArgs = { inherit inputs; };
-      };
-
-
-      "strange@charm" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        modules = [
-            ./modules/home-manager/gui.nix
-            ./modules/home-manager/wms/gnome.nix
-            {
-              home.username = "strange";
-              home.homeDirectory = "/home/strange";
-            }
-        ];
-        extraSpecialArgs = { inherit inputs; };
       };
     };
   };
