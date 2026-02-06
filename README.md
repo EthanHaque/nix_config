@@ -7,8 +7,8 @@ My personal NixOS and Home Manager configuration using flakes.
 
 1.  **Clone:**
     ```bash
-    git clone [https://github.com/EthanHaque/nix_config.git](https://github.com/EthanHaque/nix_config.git) ~/projects/nix_config
-    cd ~/projects/nix_config
+    git clone https://github.com/EthanHaque/nix_config.git
+    cd nix_config
     ```
 
 2.  **Apply:**
