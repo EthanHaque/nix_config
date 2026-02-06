@@ -2,7 +2,6 @@
   imports = [
     ../modules/sway
     ../modules/swaylock
-    ../modules/waybar
     ../modules/rofi
   ];
 
@@ -15,5 +14,6 @@
     wl-clipboard
     grim
     slurp
+    i3status
   ];
 }
