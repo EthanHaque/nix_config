@@ -41,6 +41,12 @@
         modules = [ ./hosts/precision/default.nix ];
         specialArgs = { inherit inputs; vars = { username = "strange"; }; };
       };
+
+      paper = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [ ./hosts/tiny1/default.nix ];
+        specialArgs = { inherit inputs; vars = { username = "goober"; }; };
+      };
     };
   };
 }
