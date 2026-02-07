@@ -47,6 +47,12 @@
         modules = [ ./hosts/tiny1/default.nix ];
         specialArgs = { inherit inputs; vars = { username = "goober"; }; };
       };
+
+      jebba = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [ ./hosts/tiny2/default.nix ];
+        specialArgs = { inherit inputs; vars = { username = "pigman"; }; };
+      };
     };
   };
 }
