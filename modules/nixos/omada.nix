@@ -29,6 +29,7 @@
       "--cap-add=CHOWN"
       "--cap-add=SETGID"
       "--cap-add=SETUID"
+      "--cap-add=DAC_OVERRIDE"
     ];
 
     volumes = [
