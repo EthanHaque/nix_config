@@ -4,6 +4,7 @@
     [
       ./hardware-configuration.nix
       ../../modules/nixos/core.nix
+      ../../modules/nixos/omada.nix
       inputs.home-manager.nixosModules.home-manager
     ];
 
@@ -28,6 +29,9 @@
       allowedTCPPorts = [];
     };
   };
+
+  virtualisation.docker.enable = true;
+  virtualisation.oci-containers.backend = "docker";
 
   users.users.${vars.username} = {
     isNormalUser = true;
