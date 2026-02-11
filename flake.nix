@@ -53,6 +53,12 @@
         modules = [ ./hosts/tiny2/default.nix ];
         specialArgs = { inherit inputs; vars = { username = "pigman"; }; };
       };
+
+      fort = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [ ./hosts/tiny3/default.nix ];
+        specialArgs = { inherit inputs; vars = { username = "hard"; }; };
+      };
     };
   };
 }
