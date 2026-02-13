@@ -21,7 +21,7 @@
 
           @searxng host search.home.arpa
           handle @searxng {
-            reverse_proxy 10.50.20.x:8080
+            reverse_proxy 10.50.20.10:8080
           }
 
 
