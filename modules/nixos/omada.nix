@@ -50,7 +50,6 @@
 
   networking.firewall = {
     allowedTCPPorts = [
-      8088 8043 8843       # Web UI & Captive Portal
       29811 29812 29813    # V1 Mgmt/Adoption
       29814 29815 29816    # V2 Mgmt/Transfer/RTTY
       29817                # Device Monitor
