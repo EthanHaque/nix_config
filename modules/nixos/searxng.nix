@@ -59,17 +59,17 @@
         infinite_scroll = true;
         hotkeys = "vim";
       };
-    };
 
-    enabled_plugins = [
-      "Basic Calculator"
-      "Hash plugin"
-      "Tor check plugin"
-      "Open Access DOI rewrite"
-      "Hostnames plugin"
-      "Unit converter plugin"
-      "Tracker URL remover"
-    ];
+      enabled_plugins = [
+        "Basic Calculator"
+        "Hash plugin"
+        "Tor check plugin"
+        "Open Access DOI rewrite"
+        "Hostnames plugin"
+        "Unit converter plugin"
+        "Tracker URL remover"
+      ];
+    };
   };
 
   networking.firewall.allowedTCPPorts = [ 8080 ];
