@@ -40,7 +40,6 @@
         { name = "brave";      disabled = false; }
         { name = "wikipedia";  disabled = false; }
         { name = "bing";       disabled = false; }
-        { name = "qwant";      disabled = false; }
       ];
 
       search = {
