@@ -4,6 +4,7 @@
     [
       ./hardware-configuration.nix
       ../../modules/nixos/core.nix
+      ../../modules/nixos/searxng.nix
       inputs.home-manager.nixosModules.home-manager
     ];
 
