@@ -5,6 +5,7 @@
       ./hardware-configuration.nix
       ../../modules/nixos/core.nix
       ../../modules/nixos/omada.nix
+      ../../modules/nixos/caddy.nix
       inputs.home-manager.nixosModules.home-manager
     ];
 
