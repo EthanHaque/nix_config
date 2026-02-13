@@ -73,4 +73,5 @@
   };
 
   networking.firewall.allowedTCPPorts = [ 8080 ];
+  systemd.services.uwsgi.serviceConfig.EnvironmentFile = "/var/lib/secrets/searxng.env";
 }
