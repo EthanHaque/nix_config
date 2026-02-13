@@ -7,6 +7,10 @@
       stalled-download-timeout = 500;
     };
 
+    security.pki.certificateFiles = [
+      ./certs/root.crt
+    ];
+
     gc = {
       automatic = true;
       dates = "weekly";
