@@ -34,21 +34,29 @@
         limiter = false;
       };
 
-      engines = [
-        { name = "google";     disabled = true; }
-        { name = "duckduckgo"; disabled = false; }
-        { name = "brave";      disabled = false; }
-        { name = "wikipedia";  disabled = false; }
-        { name = "bing";       disabled = false; }
-      ];
-
       search = {
         safe_search = 2;
         autocomplete_min = 2;
         autocomplete = "duckduckgo";
         ban_time_on_fail = 5;
         max_ban_time_on_fail = 120;
+        favicon_resolver = "google";
       };
+
+      engines = [
+        { name = "google";      disabled = true; }
+        { name = "duckduckgo";  disabled = false; }
+        { name = "brave";       disabled = false; }
+        { name = "bing";        disabled = false; }
+
+        { name = "wikipedia";   disabled = false; }
+        { name = "wikidata";    disabled = false; }
+
+        { name = "openstreetmap"; disabled = false; }
+        { name = "google maps";   disabled = false; }
+        { name = "youtube";       disabled = false; }
+        { name = "google news";   disabled = false; }
+      ];
 
       outgoing = {
         request_timeout = 1.0;
