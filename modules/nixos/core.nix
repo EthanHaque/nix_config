@@ -1,15 +1,15 @@
 { pkgs, lib, ... }:
 {
+  security.pki.certificateFiles = [
+    ./certs/root.crt
+  ];
+
   nix = {
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store = true;
       stalled-download-timeout = 500;
     };
-
-    security.pki.certificateFiles = [
-      ./certs/root.crt
-    ];
 
     gc = {
       automatic = true;
