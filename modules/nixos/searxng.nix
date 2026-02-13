@@ -30,7 +30,7 @@
 
       server = {
         base_url = "https://search.home.arpa";
-        image_proxy = false;
+        image_proxy = true;
         limiter = false;
       };
 
@@ -64,6 +64,8 @@
         query_in_title = true;
         infinite_scroll = true;
         hotkeys = "vim";
+        default_theme = "simple";
+        theme_args.simple.style = "auto";
       };
 
       enabled_plugins = [
