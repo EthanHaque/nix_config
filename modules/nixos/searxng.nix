@@ -43,21 +43,51 @@
         favicon_resolver = "google";
       };
 
-      engines = [
-        { name = "google";      disabled = true; }
-        { name = "duckduckgo";  disabled = false; }
-        { name = "brave";       disabled = false; }
-        { name = "bing";        disabled = false; }
+      engines = lib.mapAttrsToList (name: value: { inherit name; } // value) {
 
-        { name = "wikipedia";   disabled = false; }
-        { name = "wikidata";    disabled = false; }
+        "duckduckgo".disabled = false;
+        "brave".disabled = false;
+        "bing".disabled = false;
+        "mojeek".disabled = false;
+        "marginalia".disabled = false;
+        "marginalia".weight = 0.5;
+        "wiby".disabled = false;
 
-        { name = "openstreetmap"; disabled = false; }
-        { name = "google maps";   disabled = false; }
-        { name = "youtube";       disabled = false; }
-        { name = "google news";   disabled = false; }
-      ];
+        "startpage".disabled = false;
+        "google".disabled = true;
+        "qwant".disabled = false;
 
+        "stackoverflow".disabled = false;
+        "github".disabled = false;
+        "archlinux".disabled = false;
+        "gentoo".disabled = false;
+        "mdn".disabled = false;
+
+        "arxiv".disabled = false;
+        "google scholar".disabled = false;
+        "wolframalpha".disabled = false;
+
+        "1337x".disabled = false;
+        "bt4g".disabled = false;
+        "nyaa".disabled = false;
+
+        "bing images".disabled = false;
+        "google images".disabled = false;
+        "unsplash".disabled = false;
+        "wallhaven".disabled = false;
+        "deviantart".disabled = false;
+        "svgrepo".disabled = false;
+
+        "youtube".disabled = false;
+        "piped".disabled = false;
+        "odysee".disabled = false;
+        "rumble".disabled = false;
+
+        "wikidata".disabled = false;
+        "wikipedia".disabled = false;
+        "wikibooks".disabled = false;
+        "dictzone".disabled = true;
+      };
       outgoing = {
         request_timeout = 1.0;
         max_request_timeout = 2.0;
