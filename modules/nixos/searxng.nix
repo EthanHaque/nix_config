@@ -6,7 +6,7 @@
     environmentFile = "/var/lib/secrets/searxng.env";
 
     redisCreateLocally = true;
-    runInUwsgi = true;
+    configureUwsgi = true;
 
     uwsgiConfig = {
       http = ":8080";
