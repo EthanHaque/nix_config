@@ -11,6 +11,11 @@
     uwsgiConfig = {
       http = ":8080";
       "buffer-size" = 65535;
+      processes = 16;
+      threads = 4;
+      "enable-threads" = true;
+      "offload-threads" = 4;
+      "disable-logging" = true;
     };
 
     settings = {
@@ -34,6 +39,8 @@
         { name = "duckduckgo"; disabled = false; }
         { name = "brave";      disabled = false; }
         { name = "wikipedia";  disabled = false; }
+        { name = "bing";       disabled = false; }
+        { name = "qwant";      disabled = false; }
       ];
 
       search = {
@@ -45,10 +52,10 @@
       };
 
       outgoing = {
-        request_timeout = 5.0;
-        max_request_timeout = 15.0;
+        request_timeout = 2.0;
+        max_request_timeout = 5.0;
         pool_connections = 100;
-        pool_maxsize = 15;
+        pool_maxsize = 20;
         enable_http2 = true;
       };
 
