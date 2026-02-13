@@ -30,12 +30,12 @@
 
       server = {
         base_url = "https://search.home.arpa";
-        image_proxy = true;
+        image_proxy = false;
         limiter = false;
       };
 
       engines = [
-        { name = "google";     disabled = false; }
+        { name = "google";     disabled = true; }
         { name = "duckduckgo"; disabled = false; }
         { name = "brave";      disabled = false; }
         { name = "wikipedia";  disabled = false; }
@@ -52,8 +52,8 @@
       };
 
       outgoing = {
-        request_timeout = 2.0;
-        max_request_timeout = 5.0;
+        request_timeout = 1.0;
+        max_request_timeout = 2.0;
         pool_connections = 100;
         pool_maxsize = 20;
         enable_http2 = true;
