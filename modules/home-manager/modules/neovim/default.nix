@@ -13,7 +13,6 @@
 
     extraPackages = with pkgs; [
       gcc
-      xclip
       ripgrep
       lua-language-server
       stylua
