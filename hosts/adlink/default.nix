@@ -62,7 +62,6 @@
     ];
   };
 
-  security.sudo.wheelNeedsPassword = false;
   nix.settings = {
     trusted-users = [ vars.username ];
     substituters = [
