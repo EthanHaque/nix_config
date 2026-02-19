@@ -20,8 +20,9 @@
       DOMAIN = "https://vault.home.arpa";
       SIGNUPS_ALLOWED = false;
 
-      ROCKET_ADDRESS = "0.0.0.0";
-      ROCKET_PORT = 8000;
+      ROCKET_ADDRESS = "127.0.0.1";
+      ROCKET_PORT = 8322;
+      ROCKET_LOG = "critical";
 
       WEB_VAULT_ENABLED = true;
 
@@ -29,5 +30,5 @@
     };
   };
 
-  networking.firewall.allowedTCPPorts = [ 8000 ];
+  networking.firewall.allowedTCPPorts = [ 8322 ];
 }
