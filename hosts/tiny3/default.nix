@@ -4,6 +4,7 @@
     [
       ./hardware-configuration.nix
       ../../modules/nixos/core.nix
+      ../../modules/nixos/vaultwarden.nix
       inputs.home-manager.nixosModules.home-manager
     ];
 
@@ -22,7 +23,16 @@
   networking = {
     hostName = "fort";
     networkmanager.enable = false;
-    useDHCP = true;
+    useDHCP = false;
+    interfaces.eno1 = {
+      useDHCP = false;
+      ipv4.addresses = [{
+        address = "10.50.25.10";
+        prefixLength = 24;
+      }];
+    };
+    defaultGateway = "10.50.25.1";
+    nameservers = [ "10.50.25.1" ];
     firewall = {
       enable = true;
       allowedTCPPorts = [];
@@ -49,6 +59,5 @@
     };
   };
 
-  system.stateVersion = "25.11"; # Did you read the comment?
-
+  system.stateVersion = "25.11";
 }
