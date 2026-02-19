@@ -27,7 +27,9 @@
 
           @vaultwarden host vault.home.arpa
           handle @vaultwarden {
-            reverse_proxy 10.50.20.x:8000
+            reverse_proxy 10.50.25.10:8322 {
+              header_up X-Real-IP {remote_host}
+            }
           }
 
 
