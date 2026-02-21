@@ -5,7 +5,7 @@ let
 
   homesteadModpack = pkgs.fetchPackwizModpack {
     src = inputs.homestead-pack;
-    packHash = lib.fakeHash;
+    packHash = "sha256-v1Q1sLrL40qgCc3GyMo06W0JFKkPBrYihxGgdPihIQk=";
   };
 
   distantHorizons = pkgs.fetchurl {
