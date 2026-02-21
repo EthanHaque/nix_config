@@ -4,6 +4,7 @@
     [
       ./hardware-configuration.nix
       ../../modules/nixos/core.nix
+      ../../modules/nixos/minecraft.nix
       inputs.home-manager.nixosModules.home-manager
     ];
 

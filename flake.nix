@@ -16,6 +16,16 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    nix-minecraft = {
+      url = "github:Infinidoge/nix-minecraft";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    homestead-pack = {
+      url = "github:EthanHaque/homestead_packwiz";
+      flake = false;
+    };
+
     nvim-lazy-config = {
       url = "github:EthanHaque/nvim_lazy_config";
       flake = false;
