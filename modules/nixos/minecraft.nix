@@ -43,10 +43,9 @@ in
       };
 
       symlinks = collectFilesAt homesteadModpack "mods"
-        // collectFilesAt homesteadModpack "patchouli_books"
-        // collectFilesAt homesteadModpack "resourcepacks";
+        // collectFilesAt homesteadModpack "patchouli_books";
 
-      files = collectFilesAt homesteadModpack "config";
+      files = collectFilesAt homesteadModpack "config"
         // collectFilesAt homesteadModpack "kubejs"
         // collectFilesAt homesteadModpack "scripts";
     };
