@@ -7,11 +7,6 @@ let
     src = inputs.homestead-pack;
     packHash = "sha256-v1Q1sLrL40qgCc3GyMo06W0JFKkPBrYihxGgdPihIQk=";
   };
-
-  distantHorizons = pkgs.fetchurl {
-    url = "https://cdn.modrinth.com/data/uCdwusMi/versions/lC6CwqPp/DistantHorizons-2.4.5-b-1.20.1-fabric-forge.jar";
-    hash = "sha512-Z5y2+bVdfupDwX8CBAQhQFkN5xKwzs3BQBboBkqYRmleL0OJIjd/ZY4mU0xJy2Hm2pOaa+U8LLHNG8CItp2z7g==";
-  };
 in
 {
   imports = [ inputs.nix-minecraft.nixosModules.minecraft-servers ];
