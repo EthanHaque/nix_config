@@ -35,8 +35,8 @@ in
         gamemode = "survival";
         motd = "Homestead on Nix";
         max-players = 10;
-        view-distance = 12;
-        simulation-distance = 10;
+        view-distance = 6;
+        simulation-distance = 6;
       };
 
       whitelist = {
