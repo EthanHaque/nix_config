@@ -30,13 +30,22 @@ in
 
       serverProperties = {
         server-port = 25565;
-        difficulty = "normal";
+        white-list = true;
+        difficulty = "hard";
         gamemode = "survival";
-        motd = "Homestead";
+        motd = "Homestead on Nix";
         max-players = 10;
         view-distance = 12;
         simulation-distance = 10;
       };
+
+      whitelist = {
+        "bbeeath" = "e82e11fa-74f8-4958-b1fa-e9f4d1357c95";
+      };
+
+      operators = {
+        "bbeeath" = "e82e11fa-74f8-4958-b1fa-e9f4d1357c95";
+      }
 
       symlinks = collectFilesAt homesteadModpack "mods" // {
         "mods/DistantHorizons-2.4.5-b-1.20.1.jar" = distantHorizons;
