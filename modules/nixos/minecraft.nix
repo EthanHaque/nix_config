@@ -42,11 +42,13 @@ in
         "bbeeath" = "e82e11fa-74f8-4958-b1fa-e9f4d1357c95";
       };
 
-      symlinks = collectFilesAt homesteadModpack "mods" // {
-        "mods/DistantHorizons-2.4.5-b-1.20.1.jar" = distantHorizons;
-      };
+      symlinks = collectFilesAt homesteadModpack "mods"
+        // collectFilesAt homesteadModpack "patchouli_books"
+        // collectFilesAt homesteadModpack "resourcepacks";
 
       files = collectFilesAt homesteadModpack "config";
+        // collectFilesAt homesteadModpack "kubejs"
+        // collectFilesAt homesteadModpack "scripts";
     };
   };
 }
