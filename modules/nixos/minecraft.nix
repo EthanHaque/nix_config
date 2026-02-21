@@ -53,7 +53,7 @@ in
         motd = "Homestead on Nix";
         max-players = 10;
         view-distance = 10;
-        simulation-distance = 10;
+        simulation-distance = 6;
       };
 
       whitelist = {
