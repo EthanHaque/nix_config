@@ -4,7 +4,7 @@ let
   inherit (inputs.nix-minecraft.lib) collectFilesAt;
 
   homesteadModpack = pkgs.fetchPackwizModpack {
-    src = inputs.homestead_packwiz;
+    src = inputs.homestead-pack;
     packHash = lib.fakeHash;
   };
 
