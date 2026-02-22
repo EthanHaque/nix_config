@@ -54,7 +54,7 @@ in
         max-players = 10;
         view-distance = 10;
         simulation-distance = 6;
-        level-seed = "jebbajebba";
+        level-seed = "jebba01";
       };
 
       whitelist = {
