@@ -69,6 +69,12 @@
         modules = [ ./hosts/tiny3/default.nix ];
         specialArgs = { inherit inputs; vars = { username = "hard"; }; };
       };
+
+      glorb = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [ ./hosts/envy/default.nix ];
+        specialArgs = { inherit inputs; vars = { username = "grid"; }; };
+      };
     };
   };
 }
