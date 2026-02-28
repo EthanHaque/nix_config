@@ -27,12 +27,12 @@
     interfaces.eno1 = {
       useDHCP = false;
       ipv4.addresses = [{
-        address = "10.50.70.10";
+        address = "10.50.60.20";
         prefixLength = 24;
       }];
     };
-    defaultGateway = "10.50.70.1";
-    nameservers = [ "10.50.70.1" ];
+    defaultGateway = "10.50.60.20";
+    nameservers = [ "10.50.60.20" ];
     firewall = {
       enable = true;
       allowedTCPPorts = [];
