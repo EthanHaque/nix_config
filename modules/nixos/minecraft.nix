@@ -5,7 +5,7 @@ let
 
   homesteadModpack = pkgs.fetchPackwizModpack {
     src = inputs.homestead-pack;
-    packHash = "sha256-f0gM2hwbO6xM2ULfKwbvgjDF2YvmBcRoy5uLqkTCA84=";
+    packHash = "";
   };
 in
 {
