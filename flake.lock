@@ -61,11 +61,11 @@
     "homestead-pack": {
       "flake": false,
       "locked": {
-        "lastModified": 1771800290,
-        "narHash": "sha256-aor5SpbWsPy6MoVtFWniLV+6eF8ng/dFArMJvQ6ln70=",
+        "lastModified": 1772332946,
+        "narHash": "sha256-Vn30T6hNm0M0iSis4KsmP6/LSm9nRaK7xh1gNqCcCXo=",
         "owner": "EthanHaque",
         "repo": "homestead_packwiz",
-        "rev": "59921222d4450c5e3804b47086726d644a075b20",
+        "rev": "03dec3dacd5be6d405e6ef0f7185cfeb6e7edf13",
         "type": "github"
       },
       "original": {
