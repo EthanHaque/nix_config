@@ -41,8 +41,8 @@ in
         gamemode = "survival";
         motd = "Homestead on Nix";
         max-players = 10;
-        view-distance = 12;
-        simulation-distance = 10;
+        view-distance = 10;
+        simulation-distance = 8;
         level-seed = "jebba05";
       };
 
