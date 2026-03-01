@@ -24,15 +24,15 @@
     hostName = "eepy";
     networkmanager.enable = false;
     useDHCP = false;
-    interfaces.eno1 = {
+    interfaces.enp1s0 = {
       useDHCP = false;
       ipv4.addresses = [{
         address = "10.50.60.20";
         prefixLength = 24;
       }];
     };
-    defaultGateway = "10.50.60.20";
-    nameservers = [ "10.50.60.20" ];
+    defaultGateway = "10.50.60.1";
+    nameservers = [ "10.50.60.1" ];
     firewall = {
       enable = true;
       allowedTCPPorts = [];
