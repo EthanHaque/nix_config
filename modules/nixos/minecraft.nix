@@ -42,15 +42,15 @@ let
         ++ lib.optional (builtins.pathExists "${mrpack}/server-overrides") "${mrpack}/server-overrides";
     };
 
-  prominencePack = fetchMrpack {
-    url = "https://cdn.modrinth.com/data/EGs3lC8D/versions/nF5w8UmJ/Prominence%20II%20%5BFABRIC%5D%202.2.0.mrpack";
-    hash = "sha256-pXQB7kn7hiWwIieI0XixBWLcRRIPE2YWRf+1XN6nZa4=";
+  cobbleversePack = fetchMrpack {
+    url = "https://cdn.modrinth.com/data/Jkb29YJU/versions/jImAfjVc/COBBLEVERSE%201.7.30.mrpack";
+    hash = "";
   };
 
   extraServerMods = {
     C2ME = pkgs.fetchurl {
-      url = "https://cdn.modrinth.com/data/VSNURh3q/versions/s4WOiNtz/c2me-fabric-mc1.20.1-0.2.0%2Balpha.11.16.jar";
-      sha512 = "359c715fd6a0464192d36b4d9dbb7927776eaae498f0cab939b49740fc724bda83aaf4f069f395dc5975d1e82762ee3b602111d9375eb27ab6f5360c4b17f2ff";
+      url = "https://cdn.modrinth.com/data/VSNURh3q/versions/HqusQu7H/c2me-fabric-mc1.21.1-0.3.0%2Balpha.0.317.jar";
+      sha512 = "c4cd79e20a8b69ecedf507cad8d4d532db5dab2c1e34c5a254e6f8414cafd9f9cd01c0394e730c16340211d397bd30960e247c09bf66c48e455e481e3a9bf6db";
     };
   };
 
@@ -62,8 +62,8 @@ let
 
   # Merge modpack + extra mods into one derivation
   serverPack = pkgs.symlinkJoin {
-    name = "prominence-server-pack";
-    paths = [ prominencePack extraModsDrv ];
+    name = "cobbleverse-server-pack";
+    paths = [ cobbleversePack extraModsDrv ];
   };
 
   # Recursively collect files under a directory into an attrset for symlinks/files
@@ -92,7 +92,7 @@ in
     servers.jebbaserver = {
       enable = true;
       openFirewall = true;
-      package = pkgs.fabricServers.fabric-1_20_1;
+      package = pkgs.fabricServers.fabric-1_21_1;
 
       # Flags sourced from:
       #   https://wiki.openjdk.org/display/zgc/Main
@@ -119,7 +119,7 @@ in
         white-list = true;
         difficulty = "hard";
         gamemode = "survival";
-        motd = "Prominence II on Nix";
+        motd = "Cobbleverse on Nix";
         max-players = 10;
         view-distance = 10;
         simulation-distance = 8;
@@ -137,4 +137,3 @@ in
     };
   };
 }
-
