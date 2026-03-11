@@ -107,9 +107,11 @@ in
         "-XX:+PerfDisableSharedMem"
       ];
 
-      symlinks = {
-        "mods" = "${serverPack}/mods";
-      };
+      # Symlink every top-level directory from the pack (mods, datapacks,
+      # resourcepacks, scripts, kubejs, etc.) except config which needs to be
+      # writable so mods can update their own config at runtime.
+      symlinks = lib.mapAttrs (name: _: "${serverPack}/${name}")
+        (lib.filterAttrs (name: _: name != "config") (builtins.readDir serverPack));
 
       files = lib.optionalAttrs (builtins.pathExists "${serverPack}/config")
         (collectFiles serverPack "config");
@@ -137,3 +139,6 @@ in
     };
   };
 }
+
+
+
