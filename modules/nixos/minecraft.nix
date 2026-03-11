@@ -107,14 +107,18 @@ in
         "-XX:+PerfDisableSharedMem"
       ];
 
-      # Symlink every top-level directory from the pack (mods, datapacks,
-      # resourcepacks, scripts, kubejs, etc.) except config which needs to be
-      # writable so mods can update their own config at runtime.
-      symlinks = lib.mapAttrs (name: _: "${serverPack}/${name}")
-        (lib.filterAttrs (name: _: name != "config") (builtins.readDir serverPack));
+      # Mod JARs are read-only -- a symlink to the nix store is fine.
+      symlinks = { "mods" = "${serverPack}/mods"; };
 
-      files = lib.optionalAttrs (builtins.pathExists "${serverPack}/config")
-        (collectFiles serverPack "config");
+      # Everything else (config, datapacks, resourcepacks, scripts, …) is
+      # deployed as writable copies so mods like LumyMon can read/write their
+      # own data directories at runtime.
+      files = let
+        entries = builtins.readDir serverPack;
+        nonMods = lib.filterAttrs (name: _: name != "mods") entries;
+      in lib.foldlAttrs (acc: name: _:
+        acc // collectFiles serverPack name
+      ) {} nonMods;
 
       serverProperties = {
         server-port = 25565;
@@ -139,6 +143,4 @@ in
     };
   };
 }
-
-
 
