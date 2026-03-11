@@ -66,13 +66,18 @@ let
     paths = [ cobbleversePack extraModsDrv ];
   };
 
-  # Recursively collect files under a directory into an attrset for symlinks/files
+  # Recursively collect files under a directory into an attrset for symlinks/files.
+  # Uses pathExists with "/." to detect symlinks-to-directories in symlinkJoin
+  # derivations where builtins.readDir reports both files and dirs as "symlink".
   collectFiles = base: dir:
     let
       fullDir = "${base}/${dir}";
       entries = builtins.readDir fullDir;
+      isDir = name: type:
+        type == "directory"
+        || (type == "symlink" && builtins.pathExists "${fullDir}/${name}/.");
       process = name: type:
-        if type == "directory"
+        if isDir name type
         then collectFiles base "${dir}/${name}"
         else { "${dir}/${name}" = "${fullDir}/${name}"; };
     in lib.foldlAttrs (acc: name: type: acc // process name type) {} entries;
@@ -116,8 +121,13 @@ in
       files = let
         entries = builtins.readDir serverPack;
         nonMods = lib.filterAttrs (name: _: name != "mods") entries;
-      in lib.foldlAttrs (acc: name: _:
-        acc // collectFiles serverPack name
+        processEntry = name: _:
+          let path = "${serverPack}/${name}";
+          in if builtins.pathExists "${path}/."
+             then collectFiles serverPack name
+             else { "${name}" = path; };
+      in lib.foldlAttrs (acc: name: type:
+        acc // processEntry name type
       ) {} nonMods;
 
       serverProperties = {
