@@ -4,7 +4,7 @@ let
   serverModpack = pkgs.fetchPackwizModpack {
     src = inputs.perf_packwiz;
     packHash = "";
-  }
+  };
 {
   imports = [ inputs.nix-minecraft.nixosModules.minecraft-servers ];
   nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
