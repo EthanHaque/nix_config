@@ -3,7 +3,7 @@ let
   inherit (inputs.nix-minecraft.lib) collectFilesAt;
   serverModpack = pkgs.fetchPackwizModpack {
     src = inputs.perf_packwiz;
-    packHash = "";
+    packHash = "sha256-v9DQYTXaoFPYu2ylRnUAuEUeml8Em7TiYKebY9d7bwM=";
   };
 in
 {
