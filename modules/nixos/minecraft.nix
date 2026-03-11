@@ -1,5 +1,10 @@
 { pkgs, inputs, ... }:
-
+let
+  inherit (inputs.nix-minecraft.lib) collectFilesAt;
+  serverModpack = pkgs.fetchPackwizModpack {
+    src = inputs.perf_packwiz;
+    packHash = "";
+  }
 {
   imports = [ inputs.nix-minecraft.nixosModules.minecraft-servers ];
   nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
@@ -40,6 +45,8 @@
         sync-chunk-writes = false;
         network-compression-threshold = 256;
       };
+
+      symlicks = collectFilesAt serverModpack "mods";
 
       whitelist = {
         "bbeeath" = "e82e11fa-74f8-4958-b1fa-e9f4d1357c95";
