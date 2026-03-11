@@ -5,11 +5,15 @@ let
   # mods and override files. Based on https://leixb.fly.dev/blog/modrinth-modpacks-nix
   fetchMrpack = { url, hash }:
     let
-      mrpack = pkgs.fetchzip {
+      mrpackZip = pkgs.fetchurl {
         inherit url hash;
-        extension = "zip";
-        stripRoot = false;
       };
+
+      mrpack = pkgs.runCommand "mrpack-unpacked" { nativeBuildInputs = [ pkgs.unzip ]; } ''
+        mkdir -p $out
+        unzip -o -q ${mrpackZip} -d $out
+        chmod -R u+r $out
+      '';
 
       index = builtins.fromJSON (builtins.readFile "${mrpack}/modrinth.index.json");
 
