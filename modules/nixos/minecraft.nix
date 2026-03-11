@@ -2,8 +2,8 @@
 let
   inherit (inputs.nix-minecraft.lib) collectFilesAt;
   serverModpack = pkgs.fetchPackwizModpack {
-    src = inputs.perf_packwiz;
-    packHash = "sha256-v9DQYTXaoFPYu2ylRnUAuEUeml8Em7TiYKebY9d7bwM=";
+    src = inputs.homestead-pack;
+    packHash = "sha256-v1Q1sLrL40qgCc3GyMo06W0JFKkPBrYihxGgdPihIQk=";
   };
 in
 {

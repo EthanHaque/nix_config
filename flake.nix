@@ -21,8 +21,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    perf_packwiz = {
-      url = "github:EthanHaque/perf_packwiz";
+    homestead-pack = {
+      url = "github:EthanHaque/homestead_packwiz";
       flake = false;
     };
 
