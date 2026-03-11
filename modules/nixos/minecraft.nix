@@ -44,7 +44,7 @@ let
 
   prominencePack = fetchMrpack {
     url = "https://cdn.modrinth.com/data/EGs3lC8D/versions/nF5w8UmJ/Prominence%20II%20%5BFABRIC%5D%202.2.0.mrpack";
-    hash = "";
+    hash = "sha256-pXQB7kn7hiWwIieI0XixBWLcRRIPE2YWRf+1XN6nZa4=";
   };
 
   extraServerMods = {
