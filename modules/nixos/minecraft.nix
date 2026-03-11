@@ -47,7 +47,7 @@ in
         network-compression-threshold = 256;
       };
 
-      symlicks = collectFilesAt serverModpack "mods";
+      symlinks = collectFilesAt serverModpack "mods";
 
       whitelist = {
         "bbeeath" = "e82e11fa-74f8-4958-b1fa-e9f4d1357c95";
