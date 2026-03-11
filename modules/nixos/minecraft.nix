@@ -44,7 +44,7 @@ let
 
   cobbleversePack = fetchMrpack {
     url = "https://cdn.modrinth.com/data/Jkb29YJU/versions/jImAfjVc/COBBLEVERSE%201.7.30.mrpack";
-    hash = "";
+    hash = "sha256-/1ouoVSzoYMxf9ITrcdep4UTnLh0ODr9T+A5CQPzLec=";
   };
 
   extraServerMods = {
