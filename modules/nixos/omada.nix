@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   users.groups.omada = {
@@ -50,13 +55,17 @@
 
   networking.firewall = {
     allowedTCPPorts = [
-      29811 29812 29813    # V1 Mgmt/Adoption
-      29814 29815 29816    # V2 Mgmt/Transfer/RTTY
-      29817                # Device Monitor
+      29811
+      29812
+      29813 # V1 Mgmt/Adoption
+      29814
+      29815
+      29816 # V2 Mgmt/Transfer/RTTY
+      29817 # Device Monitor
     ];
     allowedUDPPorts = [
-      29810                # Device Discovery
-      27001                # App Discovery
+      29810 # Device Discovery
+      27001 # App Discovery
     ];
   };
 }

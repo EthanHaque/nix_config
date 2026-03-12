@@ -1,12 +1,18 @@
-{ config, pkgs, lib, vars, inputs, ... }:
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ../../modules/nixos/core.nix
-      ../../modules/nixos/searxng.nix
-      inputs.home-manager.nixosModules.home-manager
-    ];
+  config,
+  pkgs,
+  lib,
+  vars,
+  inputs,
+  ...
+}:
+{
+  imports = [
+    ./hardware-configuration.nix
+    ../../modules/nixos/core.nix
+    ../../modules/nixos/searxng.nix
+    inputs.home-manager.nixosModules.home-manager
+  ];
 
   boot.loader.systemd-boot.enable = false;
   boot.loader.efi.canTouchEfiVariables = false;
@@ -34,11 +40,11 @@
     '';
     firewall = {
       enable = true;
-      allowedTCPPorts = [];
+      allowedTCPPorts = [ ];
     };
   };
 
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
   hardware.graphics.enable = true;
   hardware.nvidia = {
     modesetting.enable = true;
@@ -56,7 +62,11 @@
   users.users.root.hashedPassword = "!";
   users.users.${vars.username} = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+    ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKBdFy0tjrBNCw5R7egxbw9tNKWy7eaObMljZd4YNCkE cardno:35_274_370"
     ];

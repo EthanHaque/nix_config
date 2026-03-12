@@ -1,7 +1,7 @@
 {
-pkgs,
-config,
-...
+  pkgs,
+  config,
+  ...
 }:
 {
   programs.bash = {
@@ -17,7 +17,7 @@ config,
       gc = "git commit -a --verbose";
     };
 
-  initExtra = ''
+    initExtra = ''
       export GPG_TTY=$(tty)
       export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
     '';

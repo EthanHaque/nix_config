@@ -1,14 +1,19 @@
-{ config, pkgs, vars, inputs, ... }:
+{
+  config,
+  pkgs,
+  vars,
+  inputs,
+  ...
+}:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ../../modules/nixos/core.nix
-      ../../modules/nixos/workstation.nix
-      ../../modules/nixos/gnome.nix
-      inputs.home-manager.nixosModules.home-manager
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ../../modules/nixos/core.nix
+    ../../modules/nixos/workstation.nix
+    ../../modules/nixos/gnome.nix
+    inputs.home-manager.nixosModules.home-manager
+  ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -16,7 +21,7 @@
   networking.hostName = "tau";
   networking.networkmanager.enable = true;
 
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   programs.sway.enable = true;
   programs.sway.extraOptions = [ "--unsupported-gpu" ];
@@ -36,7 +41,12 @@
 
   users.users.${vars.username} = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "docker" "input" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+      "input"
+    ];
     packages = with pkgs; [ ];
   };
 
@@ -49,8 +59,8 @@
     users.${vars.username} = {
       imports = [
         ../../modules/home-manager/gui.nix
-          ../../modules/home-manager/wms/sway.nix
-          ../../modules/home-manager/wms/gnome.nix
+        ../../modules/home-manager/wms/sway.nix
+        ../../modules/home-manager/wms/gnome.nix
       ];
       home.username = vars.username;
       home.homeDirectory = "/home/${vars.username}";

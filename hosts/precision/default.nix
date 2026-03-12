@@ -1,13 +1,19 @@
-{ config, pkgs, inputs, vars, ... }: {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ../../modules/nixos/core.nix
-      ../../modules/nixos/workstation.nix
-      ../../modules/nixos/gnome.nix
-      inputs.nixos-hardware.nixosModules.dell-precision-5530
-      inputs.home-manager.nixosModules.home-manager
-    ];
+{
+  config,
+  pkgs,
+  inputs,
+  vars,
+  ...
+}:
+{
+  imports = [
+    ./hardware-configuration.nix
+    ../../modules/nixos/core.nix
+    ../../modules/nixos/workstation.nix
+    ../../modules/nixos/gnome.nix
+    inputs.nixos-hardware.nixosModules.dell-precision-5530
+    inputs.home-manager.nixosModules.home-manager
+  ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -27,7 +33,11 @@
 
   users.users.${vars.username} = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+    ];
     packages = with pkgs; [ ];
   };
 
@@ -50,7 +60,7 @@
       ];
 
       wayland.windowManager.sway.config = {
-        bars = [];
+        bars = [ ];
         output = {
           "eDP-1" = {
             mode = "1920x1080@60Hz";

@@ -6,20 +6,20 @@
     virtualHosts = {
       "omada.home.arpa" = {
         extraConfig = ''
-          tls internal
-          reverse_proxy https://localhost:8043 {
-          transport http {
-            tls_insecure_skip_verify
+              tls internal
+              reverse_proxy https://localhost:8043 {
+              transport http {
+                tls_insecure_skip_verify
+              }
           }
-      }
-      '';
+        '';
       };
 
       "search.home.arpa" = {
         extraConfig = ''
           tls internal
           reverse_proxy 10.50.20.10:8080
-          '';
+        '';
       };
 
       "vault.home.arpa" = {
@@ -33,5 +33,8 @@
     };
   };
 
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+  ];
 }

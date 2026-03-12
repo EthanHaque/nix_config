@@ -1,7 +1,7 @@
 {
-pkgs,
-config,
-...
+  pkgs,
+  config,
+  ...
 }:
 {
   programs.yazi = {
@@ -10,7 +10,7 @@ config,
 
   home.packages = with pkgs; [
     poppler # pdf preview
-    ffmpeg  # video thumbnails
+    ffmpeg # video thumbnails
     imagemagick
   ];
 }

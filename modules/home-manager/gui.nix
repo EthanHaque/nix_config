@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [
     ./core.nix
     ./modules/browsers
@@ -7,9 +8,9 @@
   ];
 
   home.packages = with pkgs; [
-    keepassxc            # Password Manager
+    keepassxc # Password Manager
 
-    pavucontrol          # The standard GUI volume mixer (works everywhere)
-    playerctl            # CLI media controls (play/pause works on all)
+    pavucontrol # The standard GUI volume mixer (works everywhere)
+    playerctl # CLI media controls (play/pause works on all)
   ];
 }

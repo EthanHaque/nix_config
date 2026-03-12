@@ -1,13 +1,18 @@
-{ config, pkgs, inputs, vars, ... }:
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ../../modules/nixos/core.nix
-      ../../modules/nixos/omada.nix
-      ../../modules/nixos/caddy.nix
-      inputs.home-manager.nixosModules.home-manager
-    ];
+  config,
+  pkgs,
+  inputs,
+  vars,
+  ...
+}:
+{
+  imports = [
+    ./hardware-configuration.nix
+    ../../modules/nixos/core.nix
+    ../../modules/nixos/omada.nix
+    ../../modules/nixos/caddy.nix
+    inputs.home-manager.nixosModules.home-manager
+  ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -27,16 +32,18 @@
     useDHCP = false;
     interfaces.eno1 = {
       useDHCP = false;
-      ipv4.addresses = [{
-        address = "10.50.20.20";
-        prefixLength = 24;
-      }];
+      ipv4.addresses = [
+        {
+          address = "10.50.20.20";
+          prefixLength = 24;
+        }
+      ];
     };
     defaultGateway = "10.50.20.1";
     nameservers = [ "10.50.20.1" ];
     firewall = {
       enable = true;
-      allowedTCPPorts = [];
+      allowedTCPPorts = [ ];
     };
   };
 
@@ -45,7 +52,10 @@
 
   users.users.${vars.username} = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKBdFy0tjrBNCw5R7egxbw9tNKWy7eaObMljZd4YNCkE cardno:35_274_370"
     ];

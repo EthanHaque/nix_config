@@ -1,8 +1,9 @@
 {
-pkgs,
-config,
-...
-}: {
+  pkgs,
+  config,
+  ...
+}:
+{
   programs.git = {
     enable = true;
     settings = {

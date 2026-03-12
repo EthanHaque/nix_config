@@ -1,9 +1,15 @@
-{ pkgs, lib, inputs, ... }:
+{
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 
 let
   # Fetch a Modrinth .mrpack and build a derivation containing all server-side
   # mods and override files. Based on https://leixb.fly.dev/blog/modrinth-modpacks-nix
-  fetchMrpack = { url, hash }:
+  fetchMrpack =
+    { url, hash }:
     let
       mrpackZip = pkgs.fetchurl {
         inherit url hash;
@@ -17,27 +23,33 @@ let
 
       index = builtins.fromJSON (builtins.readFile "${mrpack}/modrinth.index.json");
 
-      serverFiles = builtins.filter
-        (f: !(f ? env) || f.env.server != "unsupported")
-        index.files;
+      serverFiles = builtins.filter (f: !(f ? env) || f.env.server != "unsupported") index.files;
 
-      downloads = builtins.map (file: pkgs.fetchurl {
-        urls = file.downloads;
-        inherit (file.hashes) sha512;
-      }) serverFiles;
+      downloads = builtins.map (
+        file:
+        pkgs.fetchurl {
+          urls = file.downloads;
+          inherit (file.hashes) sha512;
+        }
+      ) serverFiles;
 
       paths = builtins.map (builtins.getAttr "path") serverFiles;
 
-      derivations = lib.zipListsWith (path: download:
-        let parts = builtins.match "(.*)/(.*$)" path;
-        in pkgs.runCommand (builtins.elemAt parts 1) {} ''
+      derivations = lib.zipListsWith (
+        path: download:
+        let
+          parts = builtins.match "(.*)/(.*$)" path;
+        in
+        pkgs.runCommand (builtins.elemAt parts 1) { } ''
           mkdir -p "$out/${builtins.elemAt parts 0}"
           cp ${download} "$out/${path}"
         ''
       ) paths downloads;
-    in pkgs.symlinkJoin {
+    in
+    pkgs.symlinkJoin {
       name = "${index.name}-${index.versionId}";
-      paths = derivations
+      paths =
+        derivations
         ++ lib.optional (builtins.pathExists "${mrpack}/overrides") "${mrpack}/overrides"
         ++ lib.optional (builtins.pathExists "${mrpack}/server-overrides") "${mrpack}/server-overrides";
     };
@@ -54,33 +66,44 @@ let
     };
   };
 
-  extraModsDrv = pkgs.runCommand "extra-mods" {} ''
+  extraModsDrv = pkgs.runCommand "extra-mods" { } ''
     mkdir -p $out/mods
-    ${lib.concatStringsSep "\n" (lib.mapAttrsToList
-      (name: drv: "cp ${drv} $out/mods/${name}.jar") extraServerMods)}
+    ${lib.concatStringsSep "\n" (
+      lib.mapAttrsToList (name: drv: "cp ${drv} $out/mods/${name}.jar") extraServerMods
+    )}
   '';
 
   # Merge modpack + extra mods into one derivation
   serverPack = pkgs.symlinkJoin {
     name = "cobbleverse-server-pack";
-    paths = [ cobbleversePack extraModsDrv ];
+    paths = [
+      cobbleversePack
+      extraModsDrv
+    ];
   };
 
   # Recursively collect files under a directory into an attrset for symlinks/files.
   # Uses pathExists with "/." to detect symlinks-to-directories in symlinkJoin
   # derivations where builtins.readDir reports both files and dirs as "symlink".
-  collectFiles = base: dir:
+  collectFiles =
+    base: dir:
     let
       fullDir = "${base}/${dir}";
       entries = builtins.readDir fullDir;
-      isDir = name: type:
-        type == "directory"
-        || (type == "symlink" && builtins.pathExists "${fullDir}/${name}/.");
-      process = name: type:
-        if isDir name type
-        then collectFiles base "${dir}/${name}"
-        else { "${dir}/${name}" = "${fullDir}/${name}"; };
-    in lib.foldlAttrs (acc: name: type: acc // process name type) {} entries;
+      isDir =
+        name: type:
+        type == "directory" || (type == "symlink" && builtins.pathExists "${fullDir}/${name}/.");
+      process =
+        name: type:
+        if isDir name type then
+          collectFiles base "${dir}/${name}"
+        else
+          { "${dir}/${name}" = "${fullDir}/${name}"; };
+    in
+    lib.foldlAttrs (
+      acc: name: type:
+      acc // process name type
+    ) { } entries;
 in
 {
   imports = [ inputs.nix-minecraft.nixosModules.minecraft-servers ];
@@ -113,22 +136,28 @@ in
       ];
 
       # Mod JARs are read-only -- a symlink to the nix store is fine.
-      symlinks = { "mods" = "${serverPack}/mods"; };
+      symlinks = {
+        "mods" = "${serverPack}/mods";
+      };
 
       # Everything else (config, datapacks, resourcepacks, scripts, …) is
       # deployed as writable copies so mods like LumyMon can read/write their
       # own data directories at runtime.
-      files = let
-        entries = builtins.readDir serverPack;
-        nonMods = lib.filterAttrs (name: _: name != "mods") entries;
-        processEntry = name: _:
-          let path = "${serverPack}/${name}";
-          in if builtins.pathExists "${path}/."
-             then collectFiles serverPack name
-             else { "${name}" = path; };
-      in lib.foldlAttrs (acc: name: type:
-        acc // processEntry name type
-      ) {} nonMods;
+      files =
+        let
+          entries = builtins.readDir serverPack;
+          nonMods = lib.filterAttrs (name: _: name != "mods") entries;
+          processEntry =
+            name: _:
+            let
+              path = "${serverPack}/${name}";
+            in
+            if builtins.pathExists "${path}/." then collectFiles serverPack name else { "${name}" = path; };
+        in
+        lib.foldlAttrs (
+          acc: name: type:
+          acc // processEntry name type
+        ) { } nonMods;
 
       serverProperties = {
         server-port = 25565;
@@ -153,4 +182,3 @@ in
     };
   };
 }
-

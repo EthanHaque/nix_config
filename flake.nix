@@ -32,49 +32,91 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-    nixosConfigurations = {
-      zone = nixpkgs.lib.nixosSystem {
-        system = "aarch64-linux";
-        modules = [ ./hosts/adlink/default.nix ];
-        specialArgs = { inherit inputs; vars = { username = "tape"; }; };
-      };
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }@inputs:
+    {
+      nixosConfigurations = {
+        zone = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          modules = [ ./hosts/adlink/default.nix ];
+          specialArgs = {
+            inherit inputs;
+            vars = {
+              username = "tape";
+            };
+          };
+        };
 
-      tau = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [ ./hosts/powerspec/default.nix ];
-        specialArgs = { inherit inputs; vars = { username = "neutrino"; }; };
-      };
+        tau = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ ./hosts/powerspec/default.nix ];
+          specialArgs = {
+            inherit inputs;
+            vars = {
+              username = "neutrino";
+            };
+          };
+        };
 
-      charm = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [ ./hosts/precision/default.nix ];
-        specialArgs = { inherit inputs; vars = { username = "strange"; }; };
-      };
+        charm = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ ./hosts/precision/default.nix ];
+          specialArgs = {
+            inherit inputs;
+            vars = {
+              username = "strange";
+            };
+          };
+        };
 
-      paper = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [ ./hosts/tiny1/default.nix ];
-        specialArgs = { inherit inputs; vars = { username = "goober"; }; };
-      };
+        paper = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ ./hosts/tiny1/default.nix ];
+          specialArgs = {
+            inherit inputs;
+            vars = {
+              username = "goober";
+            };
+          };
+        };
 
-      jebba = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [ ./hosts/tiny2/default.nix ];
-        specialArgs = { inherit inputs; vars = { username = "pigman"; }; };
-      };
+        jebba = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ ./hosts/tiny2/default.nix ];
+          specialArgs = {
+            inherit inputs;
+            vars = {
+              username = "pigman";
+            };
+          };
+        };
 
-      fort = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [ ./hosts/tiny3/default.nix ];
-        specialArgs = { inherit inputs; vars = { username = "hard"; }; };
-      };
+        fort = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ ./hosts/tiny3/default.nix ];
+          specialArgs = {
+            inherit inputs;
+            vars = {
+              username = "hard";
+            };
+          };
+        };
 
-      glorb = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [ ./hosts/envy/default.nix ];
-        specialArgs = { inherit inputs; vars = { username = "grid"; }; };
+        glorb = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ ./hosts/envy/default.nix ];
+          specialArgs = {
+            inherit inputs;
+            vars = {
+              username = "grid";
+            };
+          };
+        };
       };
     };
-  };
 }
