@@ -47,7 +47,6 @@
       "docker"
       "input"
     ];
-    packages = with pkgs; [ ];
   };
 
   programs.steam.enable = true;
