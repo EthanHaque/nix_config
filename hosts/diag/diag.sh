@@ -45,7 +45,8 @@ phase_done() {
 START_TIME=$(date +%s)
 
 get_max_temp() {
-    sensors 2>/dev/null | grep -oP '\+\K[0-9]+\.[0-9]+(?=°C)' | sort -rn | head -1
+    sensors -u 2>/dev/null \
+        | awk '/temp[0-9]+_input:/ { v=$2+0; if (v > 0 && v < 200 && v > max) max=v } END { if (max > 0) printf "%.1f", max }'
 }
 
 trap 'echo ""; echo "Interrupted."; exit 1' INT
