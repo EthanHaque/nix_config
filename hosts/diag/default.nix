@@ -61,6 +61,7 @@
   programs.tmux = {
     enable = true;
     historyLimit = 50000;
+    extraConfig = "setw -g mode-keys vi";
   };
 
   programs.bash.loginShellInit = ''
