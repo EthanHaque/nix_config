@@ -1,18 +1,50 @@
 set $mod Mod4
 
+# Monitor setup
+
+output DP-2 {
+    mode 3840x2160@143.990Hz
+    pos 3840 0
+}
+
+output DP-3 {
+    mode 3840x2160@143.990Hz
+    pos 0 0
+}
+
+input "1386:855:Wacom_Intuos_Pro_M_Pen" {
+    map_to_output DP-2
+}
+
+# Notification daemon
 exec mako
+
+# Enable screensharing on wayland
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
+# Start GNOME Keyring for the Secrets API
+exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
+
+# Ensure D-Bus and systemd are aware of the Wayland environment so Flatpaks can route properly
+exec --no-startup-id dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 bindsym $mod+m exec rofi -show drun
 bindsym $mod+Return exec ghostty
+bindsym $mod+f exec firefox
+bindsym $mod+p exec firefox --private-window
 
-bindsym $mod+d split h
-bindsym $mod+Shift+d split v
+bindsym $mod+v split h
+bindsym $mod+Shift+v split v
 
 # kill focused window
 bindsym $mod+w kill
+
+# Focus parent and child
+bindsym $mod+a focus parent
+bindsym $mod+c focus child
 
 # change focus
 bindsym $mod+h focus left
@@ -26,22 +58,28 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
+# Move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the currently focused scratchpad window
+bindsym $mod+minus scratchpad show
+
 # enter fullscreen mode for the focused container
 bindsym $mod+Shift+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+Shift+s layout stacking
-bindsym $mod+Shift+w layout tabbed
+bindsym $mod+Shift+t layout tabbed
 bindsym $mod+Shift+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+v floating toggle
+bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+
-bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 1%+
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-
 bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
 bindsym Print exec grim -g "$(slurp)" -t png - | tee "$(xdg-user-dir PICTURES)/$(date '+%Y-%m-%d-%H%M%S_screenshot.png')" | wl-copy -t image/png
@@ -96,14 +134,6 @@ set $mode_resize Resize / Move
 # This mode will make it easier to resize and move workspaces without
 # having to bind a bunch of obscure bindings.
 mode "$mode_resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Focus parent and child
-        bindsym a focus parent
-        bindsym $mod+a focus parent
-        bindsym c focus child
-        bindsym $mod+c focus child
-
         # Move containers
         bindsym 1 move container to workspace number $ws1; workspace number $ws1
         bindsym 2 move container to workspace number $ws2; workspace number $ws2
